@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>공주한끼</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="homeView" class="view home-view" aria-label="공주한끼 홈">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">공주대 생활권</p>
+            <h1>공주한끼</h1>
+          </div>
+          <div class="top-actions">
+            <button id="openSearchButton" class="icon-pill" type="button" aria-label="검색 열기">검색</button>
+            <button id="openCompareButton" class="pill-button dark" type="button">비교하기</button>
+          </div>
+        </header>
+
+        <section id="searchPanel" class="search-panel" aria-label="가게 검색">
+          <label class="search-box">
+            <span>검색</span>
+            <input id="homeSearchInput" type="search" placeholder="가게 이름, 카테고리, 메뉴 검색">
+          </label>
+          <div id="homeSearchResults" class="search-results"></div>
+        </section>
+
+        <section class="map-card" aria-label="공주대 주변 지도">
+          <div class="map-toolbar">
+            <div>
+              <strong>신관동 주변</strong>
+              <span>샘플 지도</span>
+            </div>
+            <button id="fitMapButton" class="pill-button light" type="button">전체 보기</button>
+          </div>
+          <div id="customMap" class="custom-map" role="application" aria-label="가게 핀이 표시된 지도">
+            <div class="campus-zone">공주대학교</div>
+            <div class="road road-main"></div>
+            <div class="road road-sub"></div>
+            <div class="road road-cross"></div>
+            <div class="district district-left">신관동</div>
+            <div class="district district-right">카페 거리</div>
+          </div>
+        </section>
+
+        <section id="bottomSheet" class="bottom-sheet" aria-label="가게 리스트">
+          <button id="sheetToggleButton" class="sheet-handle" type="button" aria-label="가게 리스트 확장 또는 축소">
+            <span></span>
+          </button>
+          <div class="sheet-heading">
+            <div>
+              <p class="eyebrow">탐색</p>
+              <h2>가게 리스트</h2>
+            </div>
+            <span id="storeCountBadge" class="count-badge">0곳</span>
+          </div>
+          <div id="storeList" class="store-list"></div>
+        </section>
+      </section>
+
+      <section id="compareView" class="view compare-view hidden" aria-label="가게 비교하기">
+        <header class="compare-header">
+          <button id="closeCompareButton" class="pill-button light" type="button">홈으로</button>
+          <div>
+            <p class="eyebrow">정보 비교</p>
+            <h2>비교하기</h2>
+          </div>
+        </header>
+        <div class="compare-search-area">
+          <label class="search-box">
+            <span>가게 선택</span>
+            <input id="compareSearchInput" type="search" placeholder="비교할 가게 이름 검색">
+          </label>
+          <div id="compareSearchResults" class="search-results"></div>
+        </div>
+        <div id="compareSlots" class="compare-slots"></div>
+        <div id="compareTable" class="compare-table"></div>
+      </section>
+
+      <aside id="detailPanel" class="detail-panel hidden" aria-label="가게 상세정보">
+        <div class="detail-content">
+          <button id="closeDetailButton" class="close-button" type="button" aria-label="상세정보 닫기">닫기</button>
+          <img id="detailImage" class="detail-image" alt="">
+          <div class="detail-title-row">
+            <div>
+              <p id="detailCategory" class="eyebrow"></p>
+              <h2 id="detailName"></h2>
+            </div>
+            <button id="detailCompareButton" class="pill-button dark" type="button">비교함 추가</button>
+          </div>
+          <p id="detailDescription" class="detail-description"></p>
+          <div id="detailKeywords" class="tag-row"></div>
+          <dl class="info-list">
+            <div><dt>주소</dt><dd id="detailAddress"></dd></div>
+            <div><dt>영업시간</dt><dd id="detailHours"></dd></div>
+            <div><dt>메뉴</dt><dd id="detailMenu"></dd></div>
+            <div><dt>가격대</dt><dd id="detailPrice"></dd></div>
+          </dl>
+          <div id="detailRatings" class="rating-grid"></div>
+          <div class="detail-actions">
+            <button id="reviewButton" class="pill-button dark wide" type="button">평가하기</button>
+          </div>
+        </div>
+      </aside>
+
+      <section id="reviewModal" class="modal hidden" aria-label="가게 평가하기" role="dialog" aria-modal="true">
+        <div class="modal-card">
+          <div class="modal-header">
+            <div>
+              <p class="eyebrow">키워드 평가</p>
+              <h2 id="reviewStoreName">평가하기</h2>
+            </div>
+            <button id="closeReviewButton" class="close-button" type="button">닫기</button>
+          </div>
+          <form id="reviewForm">
+            <div id="sliderFields" class="slider-fields"></div>
+            <div id="keywordFields" class="keyword-fields"></div>
+            <button class="pill-button dark wide" type="submit">평가 저장</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
