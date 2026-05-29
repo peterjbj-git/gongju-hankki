@@ -62,9 +62,11 @@ let toastTimer = 0;
 const state = {
   stores: [],
   filteredStores: [],
+  selectedStore: null,
   selectedCategory: "전체",
   selectedSort: "default",
   searchQuery: "",
+  isSearchOpen: false,
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -143,8 +145,11 @@ async function init() {
 
 function bindEvents() {
   elements.openSearchButton.addEventListener("click", () => {
-    elements.searchPanel.classList.toggle("open");
-    elements.homeSearchInput.focus();
+    if (state.isSearchOpen) {
+      exitSearchMode({ clearQuery: false });
+    } else {
+      enterSearchMode();
+    }
   });
 
   elements.sheetToggleButton.addEventListener("click", (event) => {
@@ -172,6 +177,8 @@ function bindEvents() {
   elements.closeReviewButton.addEventListener("click", closeReviewModal);
   elements.fitMapButton.addEventListener("click", () => {
     selectedStoreId = null;
+    state.selectedStore = null;
+    resetSearchState();
     fitMapToStores(state.filteredStores);
     renderMapMarkers(state.filteredStores);
   });
@@ -192,6 +199,38 @@ function bindEvents() {
 function toggleSheet() {
   const nextState = sheetState === "collapsed" ? "half" : sheetState === "half" ? "expanded" : "collapsed";
   setSheetState(nextState);
+}
+
+function enterSearchMode() {
+  state.isSearchOpen = true;
+  elements.searchPanel.classList.add("open");
+  elements.openSearchButton.setAttribute("aria-expanded", "true");
+  elements.homeSearchInput.focus();
+}
+
+function exitSearchMode({ clearQuery = true } = {}) {
+  state.isSearchOpen = false;
+  elements.searchPanel.classList.remove("open");
+  elements.openSearchButton.setAttribute("aria-expanded", "false");
+  closeSearchResults();
+  closeFilterMenus();
+  elements.homeSearchInput.blur();
+  if (clearQuery) {
+    state.searchQuery = "";
+    elements.homeSearchInput.value = "";
+    applyFiltersAndSort();
+  }
+}
+
+function closeSearchResults() {
+  elements.homeSearchResults.innerHTML = "";
+}
+
+function resetSearchState() {
+  state.searchQuery = "";
+  elements.homeSearchInput.value = "";
+  exitSearchMode({ clearQuery: false });
+  applyFiltersAndSort();
 }
 
 function setSheetState(nextState) {
@@ -388,7 +427,8 @@ function resetFilters() {
   state.selectedSort = "default";
   state.searchQuery = "";
   elements.homeSearchInput.value = "";
-  elements.homeSearchResults.innerHTML = "";
+  closeSearchResults();
+  closeFilterMenus();
   applyFiltersAndSort();
 }
 
@@ -486,7 +526,7 @@ function renderMapMarkers(list = state.filteredStores) {
         title: store.name,
         zIndex: store.id === selectedStoreId ? 2 : 1,
       });
-      window.kakao.maps.event.addListener(marker, "click", () => openDetail(store.id));
+      window.kakao.maps.event.addListener(marker, "click", () => openStoreDetail(store.id, { clearSearch: true }));
       return marker;
     });
 }
@@ -664,13 +704,11 @@ function renderStoreList(list) {
   elements.storeList.querySelectorAll(".store-card").forEach((card) => {
     const storeId = card.dataset.storeId;
     card.addEventListener("click", () => {
-      openDetail(storeId);
-      focusStoreOnMap(storeId);
+      openStoreDetail(storeId, { clearSearch: true });
     });
     card.querySelector(".detail-action").addEventListener("click", (event) => {
       event.stopPropagation();
-      openDetail(storeId);
-      focusStoreOnMap(storeId);
+      openStoreDetail(storeId, { clearSearch: true });
     });
     card.querySelector(".compare-action").addEventListener("click", (event) => {
       event.stopPropagation();
@@ -709,7 +747,7 @@ function renderSearchResults(query, mode) {
   target.querySelectorAll(".search-result").forEach((button) => {
     button.addEventListener("click", () => {
       if (mode === "home") {
-        openDetail(button.dataset.storeId);
+        openStoreDetail(button.dataset.storeId, { clearSearch: true });
       } else {
         addToCompare(button.dataset.storeId);
         elements.compareSearchInput.value = "";
@@ -719,10 +757,29 @@ function renderSearchResults(query, mode) {
   });
 }
 
+function openStoreDetail(storeId, { clearSearch = false } = {}) {
+  const store = findStore(storeId);
+  if (!store) return;
+  selectedStoreId = store.id;
+  state.selectedStore = store;
+  closeSearchResults();
+  closeFilterMenus();
+  elements.homeSearchInput.blur();
+  if (clearSearch) {
+    state.searchQuery = "";
+    elements.homeSearchInput.value = "";
+    exitSearchMode({ clearQuery: false });
+    applyFiltersAndSort();
+  }
+  setSheetState("collapsed");
+  openDetail(store.id);
+}
+
 function openDetail(storeId) {
   const store = findStore(storeId);
   if (!store) return;
   selectedStoreId = storeId;
+  state.selectedStore = store;
   const ratings = getMergedRatings(store);
   if (store.image) {
     elements.detailImage.src = store.image;
@@ -749,6 +806,9 @@ function openDetail(storeId) {
 
 function closeDetail() {
   elements.detailPanel.classList.add("hidden");
+  selectedStoreId = null;
+  state.selectedStore = null;
+  resetSearchState();
 }
 
 function renderRatingBar(label, score) {
@@ -917,6 +977,7 @@ function getTopKeywords(store) {
 }
 
 function openCompareView() {
+  resetSearchState();
   elements.homeView.classList.add("hidden");
   elements.compareView.classList.remove("hidden");
   closeDetail();
@@ -926,6 +987,7 @@ function openCompareView() {
 function closeCompareView() {
   elements.compareView.classList.add("hidden");
   elements.homeView.classList.remove("hidden");
+  resetSearchState();
 }
 
 function addToCompare(storeId) {
