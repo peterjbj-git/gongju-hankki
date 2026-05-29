@@ -4,6 +4,14 @@ const COMPARE_KEY = "gongju-hankki-compare";
 const KAKAO_KEY_PLACEHOLDER = "KAKAO_JAVASCRIPT_KEY_HERE";
 const KAKAO_SDK_TIMEOUT_MS = 7000;
 const MAP_DEBUG_PREFIX = "[공주한끼 지도]";
+const SHEET_STATES = ["collapsed", "half", "expanded"];
+const AUTO_DESCRIPTION = "카카오맵 기준으로 수집한 공주시 신관동 식당 후보입니다.";
+const DISPLAY_FALLBACKS = {
+  menu: "대표메뉴 확인 중",
+  hours: "영업시간 확인 중",
+  price: "가격대 확인 중",
+  description: "한 줄 평가 준비 중",
+};
 
 const ratingLabels = {
   taste: "맛",
@@ -11,6 +19,16 @@ const ratingLabels = {
   portion: "양",
   cleanliness: "청결도",
 };
+
+const categoryOptions = ["전체", "한식", "중식", "일식", "양식", "분식", "고기", "치킨", "피자", "국밥", "돈까스", "족발/보쌈", "기타"];
+
+const sortOptions = [
+  { value: "default", label: "기본순" },
+  { value: "taste", label: "맛 높은순" },
+  { value: "value", label: "가성비 높은순" },
+  { value: "portion", label: "양 높은순" },
+  { value: "cleanliness", label: "청결도 높은순" },
+];
 
 const keywordGroups = {
   food: {
@@ -32,6 +50,22 @@ let selectedStoreId = null;
 let compareIds = [];
 let kakaoMap = null;
 let mapMarkers = [];
+let sheetState = "collapsed";
+let dragStartY = 0;
+let dragStartOffset = 0;
+let sheetOffset = 0;
+let sheetAnimationFrame = 0;
+let isDraggingSheet = false;
+let didDragSheet = false;
+let toastTimer = 0;
+
+const state = {
+  stores: [],
+  filteredStores: [],
+  selectedCategory: "전체",
+  selectedSort: "default",
+  searchQuery: "",
+};
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -46,6 +80,11 @@ const elements = {
   searchPanel: $("#searchPanel"),
   homeSearchInput: $("#homeSearchInput"),
   homeSearchResults: $("#homeSearchResults"),
+  categoryFilterButton: $("#categoryFilterButton"),
+  categoryFilterMenu: $("#categoryFilterMenu"),
+  sortFilterButton: $("#sortFilterButton"),
+  sortFilterMenu: $("#sortFilterMenu"),
+  resetFilterButton: $("#resetFilterButton"),
   openSearchButton: $("#openSearchButton"),
   openCompareButton: $("#openCompareButton"),
   closeCompareButton: $("#closeCompareButton"),
@@ -59,6 +98,7 @@ const elements = {
   detailCategory: $("#detailCategory"),
   detailName: $("#detailName"),
   detailDescription: $("#detailDescription"),
+  detailReviewCount: $("#detailReviewCount"),
   detailKeywords: $("#detailKeywords"),
   detailAddress: $("#detailAddress"),
   detailHours: $("#detailHours"),
@@ -74,6 +114,7 @@ const elements = {
   sliderFields: $("#sliderFields"),
   keywordFields: $("#keywordFields"),
   fitMapButton: $("#fitMapButton"),
+  toast: $("#toast"),
 };
 
 init();
@@ -82,6 +123,8 @@ async function init() {
   try {
     const response = await fetch(DATA_URL);
     stores = await response.json();
+    state.stores = stores;
+    state.filteredStores = [...stores];
   } catch (error) {
     console.error(error);
     elements.storeList.innerHTML = "<p>가게 데이터를 불러오지 못했습니다. 로컬 서버로 실행해 주세요.</p>";
@@ -89,12 +132,13 @@ async function init() {
   }
 
   compareIds = loadCompareIds();
+  renderFilterMenus();
   bindEvents();
   await initMap();
-  renderMapMarkers();
-  renderStoreList(stores);
+  applyFiltersAndSort();
   renderSearchResults("", "home");
   renderCompare();
+  setSheetState("collapsed");
 }
 
 function bindEvents() {
@@ -103,7 +147,23 @@ function bindEvents() {
     elements.homeSearchInput.focus();
   });
 
-  elements.sheetToggleButton.addEventListener("click", toggleSheet);
+  elements.sheetToggleButton.addEventListener("click", (event) => {
+    if (didDragSheet) {
+      event.preventDefault();
+      didDragSheet = false;
+      return;
+    }
+    toggleSheet();
+  });
+  elements.sheetToggleButton.addEventListener("pointerdown", startSheetDrag);
+  window.addEventListener("pointermove", dragSheet);
+  window.addEventListener("pointerup", endSheetDrag);
+  window.addEventListener("pointercancel", endSheetDrag);
+  window.addEventListener("resize", () => setSheetState(sheetState));
+  window.addEventListener("click", closeFilterMenusFromOutside);
+  elements.categoryFilterButton.addEventListener("click", (event) => toggleFilterMenu(event, "category"));
+  elements.sortFilterButton.addEventListener("click", (event) => toggleFilterMenu(event, "sort"));
+  elements.resetFilterButton.addEventListener("click", resetFilters);
   elements.openCompareButton.addEventListener("click", openCompareView);
   elements.closeCompareButton.addEventListener("click", closeCompareView);
   elements.closeDetailButton.addEventListener("click", closeDetail);
@@ -112,14 +172,14 @@ function bindEvents() {
   elements.closeReviewButton.addEventListener("click", closeReviewModal);
   elements.fitMapButton.addEventListener("click", () => {
     selectedStoreId = null;
-    fitMapToStores();
-    renderMapMarkers();
+    fitMapToStores(state.filteredStores);
+    renderMapMarkers(state.filteredStores);
   });
 
   elements.homeSearchInput.addEventListener("input", (event) => {
-    const query = event.target.value;
-    renderSearchResults(query, "home");
-    renderStoreList(filterStores(query));
+    state.searchQuery = event.target.value;
+    applyFiltersAndSort();
+    renderSearchResults(state.searchQuery, "home");
   });
 
   elements.compareSearchInput.addEventListener("input", (event) => {
@@ -130,22 +190,214 @@ function bindEvents() {
 }
 
 function toggleSheet() {
-  elements.bottomSheet.classList.toggle("expanded");
+  const nextState = sheetState === "collapsed" ? "half" : sheetState === "half" ? "expanded" : "collapsed";
+  setSheetState(nextState);
 }
 
-function filterStores(query) {
+function setSheetState(nextState) {
+  sheetState = nextState;
+  sheetOffset = getSheetOffsetForState(nextState);
+  elements.bottomSheet.dataset.state = nextState;
+  elements.bottomSheet.classList.toggle("dragging", isDraggingSheet);
+  setSheetOffset(sheetOffset);
+}
+
+function startSheetDrag(event) {
+  event.preventDefault();
+  isDraggingSheet = true;
+  didDragSheet = false;
+  dragStartY = event.clientY;
+  dragStartOffset = sheetOffset || getSheetOffsetForState(sheetState);
+  elements.sheetToggleButton.setPointerCapture(event.pointerId);
+  elements.bottomSheet.classList.add("dragging");
+}
+
+function dragSheet(event) {
+  if (!isDraggingSheet) return;
+  event.preventDefault();
+  const deltaY = event.clientY - dragStartY;
+  if (Math.abs(deltaY) > 6) didDragSheet = true;
+  const nextOffset = clamp(dragStartOffset + deltaY, getSheetOffsetForState("expanded"), getSheetOffsetForState("collapsed"));
+  requestSheetOffset(nextOffset);
+}
+
+function endSheetDrag() {
+  if (!isDraggingSheet) return;
+  isDraggingSheet = false;
+  elements.bottomSheet.classList.remove("dragging");
+  const nearestState = getNearestSheetState(sheetOffset);
+  setSheetState(nearestState);
+  window.setTimeout(() => {
+    didDragSheet = false;
+  }, 120);
+}
+
+function requestSheetOffset(nextOffset) {
+  sheetOffset = nextOffset;
+  if (sheetAnimationFrame) return;
+  sheetAnimationFrame = window.requestAnimationFrame(() => {
+    setSheetOffset(sheetOffset);
+    sheetAnimationFrame = 0;
+  });
+}
+
+function setSheetOffset(nextOffset) {
+  elements.bottomSheet.style.setProperty("--sheet-y", `${Math.round(nextOffset)}px`);
+}
+
+function getNearestSheetState(offset) {
+  return SHEET_STATES.reduce((closest, item) => {
+    const currentDistance = Math.abs(getSheetOffsetForState(item) - offset);
+    const closestDistance = Math.abs(getSheetOffsetForState(closest) - offset);
+    return currentDistance < closestDistance ? item : closest;
+  }, "collapsed");
+}
+
+function getSheetOffsetForState(nextState) {
+  const sheetHeight = elements.bottomSheet.getBoundingClientRect().height || window.innerHeight * 0.84;
+  if (nextState === "expanded") return 0;
+  if (nextState === "half") return Math.max(0, Math.round(window.innerHeight * 0.42));
+  return Math.max(0, Math.round(sheetHeight - 174));
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function renderFilterMenus() {
+  elements.categoryFilterMenu.innerHTML = categoryOptions.map((category) => `
+    <button class="filter-menu-item" type="button" data-category="${category}">${category}</button>
+  `).join("");
+
+  elements.sortFilterMenu.innerHTML = sortOptions.map((option) => `
+    <button class="filter-menu-item" type="button" data-sort="${option.value}">${option.label}</button>
+  `).join("");
+
+  elements.categoryFilterMenu.querySelectorAll("[data-category]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      state.selectedCategory = button.dataset.category;
+      closeFilterMenus();
+      applyFiltersAndSort();
+    });
+  });
+
+  elements.sortFilterMenu.querySelectorAll("[data-sort]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      state.selectedSort = button.dataset.sort;
+      closeFilterMenus();
+      applyFiltersAndSort();
+    });
+  });
+}
+
+function toggleFilterMenu(event, type) {
+  event.stopPropagation();
+  const target = type === "category" ? elements.categoryFilterMenu : elements.sortFilterMenu;
+  const button = type === "category" ? elements.categoryFilterButton : elements.sortFilterButton;
+  const wasOpen = !target.classList.contains("hidden");
+  closeFilterMenus();
+  target.classList.toggle("hidden", wasOpen);
+  button.setAttribute("aria-expanded", String(!wasOpen));
+}
+
+function closeFilterMenusFromOutside(event) {
+  if (event.target.closest(".filter-menu-wrap")) return;
+  closeFilterMenus();
+}
+
+function closeFilterMenus() {
+  elements.categoryFilterMenu.classList.add("hidden");
+  elements.sortFilterMenu.classList.add("hidden");
+  elements.categoryFilterButton.setAttribute("aria-expanded", "false");
+  elements.sortFilterButton.setAttribute("aria-expanded", "false");
+}
+
+function applyFiltersAndSort() {
+  const filtered = sortStores(filterStores(state.searchQuery, state.selectedCategory), state.selectedSort);
+  state.filteredStores = filtered;
+  renderStoreList(filtered);
+  renderMapMarkers(filtered);
+  updateFilterLabels();
+  if (state.searchQuery.trim()) renderSearchResults(state.searchQuery, "home");
+}
+
+function filterStores(query = "", category = "전체") {
   const normalized = query.trim().toLowerCase();
-  if (!normalized) return stores;
-  return stores.filter((store) => {
-    const haystack = [
+  return state.stores.filter((store) => {
+    const matchesSearch = !normalized || [
       store.name,
       store.category,
       store.address,
-      store.mainMenu.join(" "),
-      store.recommendFor.join(" "),
-    ].join(" ").toLowerCase();
-    return haystack.includes(normalized);
+    ].join(" ").toLowerCase().includes(normalized);
+
+    return matchesSearch && matchesCategory(store, category);
   });
+}
+
+function matchesCategory(store, selectedCategory) {
+  if (selectedCategory === "전체") return true;
+  const category = normalizeCategory(store.category, store.name);
+  return category === selectedCategory;
+}
+
+function normalizeCategory(category = "", name = "") {
+  const value = `${category} ${name}`;
+  if (value.includes("족발") || value.includes("보쌈")) return "족발/보쌈";
+  if (value.includes("돈까스") || value.includes("돈가스")) return "돈까스";
+  if (value.includes("국밥")) return "국밥";
+  if (value.includes("치킨")) return "치킨";
+  if (value.includes("피자")) return "피자";
+  if (value.includes("고기") || value.includes("삼겹") || value.includes("갈비") || value.includes("구이")) return "고기";
+  if (value.includes("분식")) return "분식";
+  if (value.includes("중식") || value.includes("중국")) return "중식";
+  if (value.includes("일식") || value.includes("일본") || value.includes("초밥") || value.includes("스시")) return "일식";
+  if (value.includes("양식") || value.includes("파스타") || value.includes("스테이크")) return "양식";
+  if (value.includes("한식") || value.includes("한정식") || value.includes("백반") || value.includes("찌개")) return "한식";
+  return "기타";
+}
+
+function sortStores(list, sortKey) {
+  const indexed = list.map((store, index) => ({ store, index }));
+  if (sortKey === "default") return indexed.map((item) => item.store);
+  return indexed.sort((a, b) => {
+    const aScore = Number(getMergedRatings(a.store)[sortKey] || 0);
+    const bScore = Number(getMergedRatings(b.store)[sortKey] || 0);
+    const aRank = aScore > 0 ? aScore : -1;
+    const bRank = bScore > 0 ? bScore : -1;
+    return bRank - aRank || a.index - b.index;
+  }).map((item) => item.store);
+}
+
+function updateFilterLabels() {
+  const selectedSort = sortOptions.find((option) => option.value === state.selectedSort);
+  elements.categoryFilterButton.textContent = state.selectedCategory === "전체" ? "카테고리" : state.selectedCategory;
+  elements.sortFilterButton.textContent = selectedSort && selectedSort.value !== "default" ? selectedSort.label : "정렬";
+
+  elements.categoryFilterMenu.querySelectorAll("[data-category]").forEach((button) => {
+    button.classList.toggle("selected", button.dataset.category === state.selectedCategory);
+  });
+  elements.sortFilterMenu.querySelectorAll("[data-sort]").forEach((button) => {
+    button.classList.toggle("selected", button.dataset.sort === state.selectedSort);
+  });
+}
+
+function resetFilters() {
+  state.selectedCategory = "전체";
+  state.selectedSort = "default";
+  state.searchQuery = "";
+  elements.homeSearchInput.value = "";
+  elements.homeSearchResults.innerHTML = "";
+  applyFiltersAndSort();
+}
+
+function isUnevaluated(ratings) {
+  return Object.keys(ratingLabels).every((key) => Number(ratings[key] || 0) === 0);
+}
+
+function formatScore(score) {
+  return Number(score || 0) > 0 ? Number(score).toFixed(1) : "미평가";
 }
 
 async function initMap() {
@@ -202,12 +454,12 @@ async function initMap() {
       window.clearTimeout(timeoutId);
       try {
         logMapDebug("kakao.maps.load() 완료. 지도 초기화를 시작합니다.");
-        const center = getMapCenter();
+        const center = getMapCenter(state.filteredStores);
         kakaoMap = new window.kakao.maps.Map(elements.customMap, {
           center,
           level: 4,
         });
-        fitMapToStores();
+        fitMapToStores(state.filteredStores);
         logMapDebug("카카오맵 초기화 완료", {
           markerSourceCount: stores.filter(hasStoreCoordinate).length,
         });
@@ -221,11 +473,11 @@ async function initMap() {
   });
 }
 
-function renderMapMarkers() {
+function renderMapMarkers(list = state.filteredStores) {
   if (!kakaoMap || !window.kakao || !window.kakao.maps) return;
 
   mapMarkers.forEach((marker) => marker.setMap(null));
-  mapMarkers = stores
+  mapMarkers = list
     .filter(hasStoreCoordinate)
     .map((store) => {
       const marker = new window.kakao.maps.Marker({
@@ -246,9 +498,9 @@ function focusStoreOnMap(storeId) {
   kakaoMap.panTo(position);
 }
 
-function fitMapToStores() {
+function fitMapToStores(list = state.filteredStores) {
   if (!kakaoMap || !window.kakao || !window.kakao.maps) return;
-  const coordinateStores = stores.filter(hasStoreCoordinate);
+  const coordinateStores = list.filter(hasStoreCoordinate);
   if (!coordinateStores.length) return;
 
   const bounds = new window.kakao.maps.LatLngBounds();
@@ -258,8 +510,8 @@ function fitMapToStores() {
   kakaoMap.setBounds(bounds);
 }
 
-function getMapCenter() {
-  const coordinateStores = stores.filter(hasStoreCoordinate);
+function getMapCenter(list = state.filteredStores) {
+  const coordinateStores = list.filter(hasStoreCoordinate);
   if (!coordinateStores.length) {
     return new window.kakao.maps.LatLng(36.4712, 127.1393);
   }
@@ -377,15 +629,25 @@ function renderMapFallback(message) {
 
 function renderStoreList(list) {
   elements.storeCountBadge.textContent = `${list.length}곳`;
+  if (!list.length) {
+    elements.storeList.innerHTML = `<p class="empty-state">조건에 맞는 가게가 없습니다.</p>`;
+    return;
+  }
+
   elements.storeList.innerHTML = list.map((store) => {
     const ratings = getMergedRatings(store);
     const keywords = getTopKeywords(store).slice(0, 4);
+    const menuText = getDisplayMenu(store);
+    const priceText = getDisplayPrice(store);
+    const reviewCount = getReviewCount(store);
     return `
       <article class="store-card" data-store-id="${store.id}">
         <div class="store-card-header">
           <div>
             <h3>${store.name}</h3>
-            <p class="store-meta">${store.category} · ${store.mainMenu[0]} · ${shortAddress(store.address)}</p>
+            <p class="store-meta">${store.category} · ${menuText} · ${shortAddress(store.address)}</p>
+            <p class="store-meta">${priceText}</p>
+            <p class="review-count compact">총 평가 ${reviewCount}개</p>
           </div>
           <span class="count-badge">${store.type === "cafe" ? "카페" : "식사"}</span>
         </div>
@@ -421,9 +683,9 @@ function renderScoreChips(ratings) {
   return `
     <div class="score-row">
       ${Object.entries(ratingLabels).map(([key, label]) => `
-        <div class="score-chip">
+        <div class="score-chip ${Number(ratings[key] || 0) === 0 ? "unevaluated" : ""}">
           <span>${label}</span>
-          <strong>${ratings[key].toFixed(1)}</strong>
+          <strong>${formatScore(ratings[key])}</strong>
         </div>
       `).join("")}
     </div>
@@ -432,14 +694,14 @@ function renderScoreChips(ratings) {
 
 function renderSearchResults(query, mode) {
   const target = mode === "home" ? elements.homeSearchResults : elements.compareSearchResults;
-  const results = filterStores(query).slice(0, 6);
+  const results = (mode === "home" ? state.filteredStores : filterStores(query, "전체")).slice(0, 6);
   if (!query.trim()) {
     target.innerHTML = "";
     return;
   }
   target.innerHTML = results.length ? results.map((store) => `
     <button class="search-result" type="button" data-store-id="${store.id}">
-      <span><strong>${store.name}</strong><br><small>${store.category} · ${store.mainMenu[0]}</small></span>
+      <span><strong>${store.name}</strong><br><small>${store.category} · ${getDisplayMenu(store)}</small></span>
       <span>${mode === "home" ? "열기" : "선택"}</span>
     </button>
   `).join("") : `<p class="compare-muted">검색 결과가 없습니다.</p>`;
@@ -462,20 +724,27 @@ function openDetail(storeId) {
   if (!store) return;
   selectedStoreId = storeId;
   const ratings = getMergedRatings(store);
-  elements.detailImage.src = store.image;
+  if (store.image) {
+    elements.detailImage.src = store.image;
+    elements.detailImage.classList.remove("hidden-image");
+  } else {
+    elements.detailImage.removeAttribute("src");
+    elements.detailImage.classList.add("hidden-image");
+  }
   elements.detailImage.alt = `${store.name} 대표 이미지`;
   elements.detailCategory.textContent = `${store.category} · ${store.type === "cafe" ? "카페" : "식사"}`;
   elements.detailName.textContent = store.name;
-  elements.detailDescription.textContent = store.description;
+  elements.detailDescription.textContent = getDisplayDescription(store);
+  elements.detailReviewCount.textContent = `총 평가 ${getReviewCount(store)}개`;
   elements.detailAddress.textContent = store.address;
-  elements.detailHours.textContent = store.hours;
-  elements.detailMenu.textContent = store.mainMenu.join(", ");
-  elements.detailPrice.textContent = store.priceRange;
+  elements.detailHours.textContent = getDisplayHours(store);
+  elements.detailMenu.textContent = getDisplayMenu(store, ", ");
+  elements.detailPrice.textContent = getDisplayPrice(store);
   elements.detailKeywords.innerHTML = getTopKeywords(store).map((keyword) => `<span class="tag">${keyword}</span>`).join("");
   elements.detailRatings.innerHTML = Object.entries(ratingLabels).map(([key, label]) => renderRatingBar(label, ratings[key])).join("");
   elements.detailPanel.classList.remove("hidden");
   focusStoreOnMap(storeId);
-  renderMapMarkers();
+  renderMapMarkers(state.filteredStores);
 }
 
 function closeDetail() {
@@ -483,6 +752,14 @@ function closeDetail() {
 }
 
 function renderRatingBar(label, score) {
+  if (Number(score || 0) === 0) {
+    return `
+      <div class="rating-bar unevaluated">
+        <div class="rating-label"><span>${label}</span><strong>미평가</strong></div>
+        <div class="bar-track"><div class="bar-fill" style="transform: scaleX(1)"></div></div>
+      </div>
+    `;
+  }
   const hiddenPercent = Math.max(0, 100 - (score / 7) * 100);
   return `
     <div class="rating-bar">
@@ -499,8 +776,8 @@ function openReviewModal() {
   elements.sliderFields.innerHTML = Object.entries(ratingLabels).map(([key, label]) => `
     <label class="slider-field">
       <div class="slider-head"><span>${label}</span><strong id="${key}Value">5</strong></div>
-      <input name="${key}" type="range" min="1" max="7" step="1" value="5">
-      <div class="ticks">${Array.from({ length: 7 }, (_, index) => `<span title="${index + 1}점"></span>`).join("")}</div>
+      <input class="rating-slider" name="${key}" type="range" min="1" max="7" step="1" value="5" aria-label="${label} 점수">
+      <div class="range-ticks">${Array.from({ length: 7 }, (_, index) => `<span>${index + 1}</span>`).join("")}</div>
     </label>
   `).join("");
 
@@ -514,8 +791,10 @@ function openReviewModal() {
   `).join("");
 
   elements.sliderFields.querySelectorAll("input[type='range']").forEach((input) => {
+    updateSliderTrack(input);
     input.addEventListener("input", () => {
       $(`#${input.name}Value`).textContent = input.value;
+      updateSliderTrack(input);
     });
   });
 
@@ -554,7 +833,25 @@ function saveReview(event) {
 
   closeReviewModal();
   openDetail(selectedStoreId);
-  renderStoreList(filterStores(elements.homeSearchInput.value));
+  applyFiltersAndSort();
+  showToast("평가가 저장되었습니다.");
+}
+
+function showToast(message) {
+  if (!elements.toast) return;
+  window.clearTimeout(toastTimer);
+  elements.toast.textContent = message;
+  elements.toast.classList.remove("hidden");
+  elements.toast.classList.add("show");
+  toastTimer = window.setTimeout(() => {
+    elements.toast.classList.remove("show");
+    elements.toast.classList.add("hidden");
+  }, 2000);
+}
+
+function updateSliderTrack(input) {
+  const percent = ((Number(input.value) - Number(input.min)) / (Number(input.max) - Number(input.min))) * 100;
+  input.style.setProperty("--value-percent", `${percent}%`);
 }
 
 function getMergedRatings(store) {
@@ -562,15 +859,51 @@ function getMergedRatings(store) {
   if (!reviews.length) return { ...store.ratings };
   const merged = {};
   Object.keys(ratingLabels).forEach((key) => {
-    const total = reviews.reduce((sum, review) => sum + review.ratings[key], store.ratings[key]);
-    merged[key] = total / (reviews.length + 1);
+    const baseScore = Number(store.ratings[key] || 0);
+    const reviewTotal = reviews.reduce((sum, review) => sum + Number(review.ratings[key] || 0), 0);
+    merged[key] = baseScore > 0 ? (reviewTotal + baseScore) / (reviews.length + 1) : reviewTotal / reviews.length;
   });
   return merged;
 }
 
+function getReviewCount(store) {
+  const baseCount = Number(store.ratingCount || 0);
+  const localCount = (loadReviews()[store.id] || []).length;
+  return baseCount + localCount;
+}
+
+function getDisplayMenu(store, separator = "; ") {
+  const menu = Array.isArray(store.mainMenu) ? store.mainMenu.filter(Boolean) : [];
+  if (!menu.length) return DISPLAY_FALLBACKS.menu;
+  if (menu.length === 1 && isUnknownValue(menu[0])) return DISPLAY_FALLBACKS.menu;
+  return menu.join(separator);
+}
+
+function getDisplayHours(store) {
+  return isUnknownValue(store.hours) ? DISPLAY_FALLBACKS.hours : store.hours;
+}
+
+function getDisplayPrice(store) {
+  const priceRange = store.priceRange;
+  const avgPrice = store.avgPricePerPerson;
+  if (isUnknownValue(priceRange) || isUnknownValue(avgPrice)) return DISPLAY_FALLBACKS.price;
+  return priceRange;
+}
+
+function getDisplayDescription(store) {
+  const description = store.description || "";
+  if (isUnknownValue(description) || description === AUTO_DESCRIPTION) return DISPLAY_FALLBACKS.description;
+  return description;
+}
+
+function isUnknownValue(value) {
+  const text = String(value || "").trim();
+  return !text || text === "확인 필요";
+}
+
 function getTopKeywords(store) {
   const counts = {};
-  Object.values(store.keywords).flat().forEach((keyword) => {
+  Object.values(store.keywords || {}).flat().forEach((keyword) => {
     counts[keyword] = (counts[keyword] || 0) + 1;
   });
   (loadReviews()[store.id] || []).forEach((review) => {
@@ -620,11 +953,12 @@ function renderCompare() {
     if (!store) {
       return `<div class="compare-slot"><p class="compare-muted">검색해서 비교할 가게를 선택하세요.</p></div>`;
     }
+    const menuText = getDisplayMenu(store);
     return `
       <div class="compare-slot filled">
-        <img src="${store.image}" alt="${store.name} 대표 이미지">
+        ${store.image ? `<img src="${store.image}" alt="${store.name} 대표 이미지">` : `<div class="image-placeholder">이미지 없음</div>`}
         <h3>${store.name}</h3>
-        <p class="compare-muted">${store.category} · ${store.mainMenu[0]}</p>
+        <p class="compare-muted">${store.category} · ${menuText}</p>
         <button class="pill-button light remove-compare" type="button" data-store-id="${store.id}">선택 해제</button>
       </div>
     `;
@@ -635,20 +969,20 @@ function renderCompare() {
   });
 
   const rows = [
-    ["대표 이미지", (store) => `<img src="${store.image}" alt="${store.name}" style="width:100%;border-radius:14px;aspect-ratio:4/3;object-fit:cover;">`],
+    ["대표 이미지", (store) => store.image ? `<img src="${store.image}" alt="${store.name}" style="width:100%;border-radius:14px;aspect-ratio:4/3;object-fit:cover;">` : "이미지 없음"],
     ["가게명", (store) => store.name],
     ["카테고리", (store) => store.category],
-    ["대표 메뉴", (store) => store.mainMenu.join(", ")],
-    ["가격대", (store) => store.priceRange],
+    ["대표 메뉴", (store) => getDisplayMenu(store, ", ")],
+    ["가격대", (store) => getDisplayPrice(store)],
     ["주소", (store) => store.address],
-    ["영업시간", (store) => store.hours],
-    ["맛 점수", (store) => getMergedRatings(store).taste.toFixed(1)],
-    ["가성비 점수", (store) => getMergedRatings(store).value.toFixed(1)],
-    ["양 점수", (store) => getMergedRatings(store).portion.toFixed(1)],
-    ["청결도 점수", (store) => getMergedRatings(store).cleanliness.toFixed(1)],
+    ["영업시간", (store) => getDisplayHours(store)],
+    ["맛 점수", (store) => formatScore(getMergedRatings(store).taste)],
+    ["가성비 점수", (store) => formatScore(getMergedRatings(store).value)],
+    ["양 점수", (store) => formatScore(getMergedRatings(store).portion)],
+    ["청결도 점수", (store) => formatScore(getMergedRatings(store).cleanliness)],
     ["주요 키워드", (store) => getTopKeywords(store).slice(0, 4).join(", ")],
-    ["추천 상황", (store) => store.recommendFor.join(", ")],
-    ["한 줄 평가", (store) => store.description],
+    ["추천 상황", (store) => store.recommendFor && store.recommendFor.length ? store.recommendFor.join(", ") : "-"],
+    ["한 줄 평가", (store) => getDisplayDescription(store)],
   ];
 
   elements.compareTable.innerHTML = rows.map(([label, getter]) => `
@@ -660,11 +994,11 @@ function renderCompare() {
 }
 
 function findStore(storeId) {
-  return stores.find((store) => store.id === storeId);
+  return state.stores.find((store) => store.id === storeId);
 }
 
 function shortAddress(address) {
-  return address.replace("충남 공주시 ", "");
+  return (address || "").replace("충남 공주시 ", "");
 }
 
 function loadReviews() {

@@ -1,209 +1,3902 @@
 [
   {
     "id": "store-001",
-    "name": "신관돈까스",
-    "category": "돈까스",
+    "name": "5000원옛날짜장",
+    "category": "중식",
     "type": "restaurant",
-    "address": "충남 공주시 신관동 대학로 12",
-    "hours": "11:00 - 20:30",
-    "mainMenu": ["등심돈까스", "치즈돈까스", "카레돈까스"],
-    "priceRange": "8,000원~11,000원",
-    "image": "https://images.unsplash.com/photo-1611765083444-a3ce30f1c885?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4712,
-    "lng": 127.1393,
-    "mapX": 43,
-    "mapY": 56,
-    "ratings": { "taste": 6.2, "value": 5.8, "portion": 6.0, "cleanliness": 5.6 },
-    "keywords": {
-      "food": ["가성비가 좋아요", "음식이 빨리 나와요"],
-      "mood": ["혼밥하기 좋아요"],
-      "etc": ["친절해요"]
+    "address": "충남 공주시 번영3로 30-1",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4697002942296,
+    "lng": 127.134618274836,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["빠른 점심", "혼밥"],
-    "description": "공주대 근처에서 빠르게 한 끼 먹기 좋은 돈까스 가게입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/480354575",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   },
   {
     "id": "store-002",
-    "name": "공주분식",
-    "category": "분식",
+    "name": "60계치킨 공주신관점",
+    "category": "치킨",
     "type": "restaurant",
-    "address": "충남 공주시 신관동 번영1로 44",
-    "hours": "10:30 - 21:00",
-    "mainMenu": ["떡볶이", "김밥", "라면"],
-    "priceRange": "3,500원~8,000원",
-    "image": "https://images.unsplash.com/photo-1635363638580-c2809d049eee?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4703,
-    "lng": 127.1404,
-    "mapX": 55,
-    "mapY": 62,
-    "ratings": { "taste": 5.7, "value": 6.4, "portion": 5.9, "cleanliness": 5.1 },
-    "keywords": {
-      "food": ["가성비가 좋아요", "음식이 빨리 나와요"],
-      "mood": ["대화하기 좋아요"],
-      "etc": ["친절해요"]
+    "address": "충남 공주시 번영2로 74",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47293501087256,
+    "lng": 127.13660440133451,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["공강 간식", "가벼운 저녁"],
-    "description": "가격 부담이 적고 회전이 빨라 공강 시간에 들르기 좋은 분식집입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/604175447",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   },
   {
     "id": "store-003",
-    "name": "청춘국밥",
-    "category": "한식",
+    "name": "678치킨 공주신관점",
+    "category": "치킨",
     "type": "restaurant",
-    "address": "충남 공주시 신관동 공주대학로 31",
-    "hours": "09:00 - 22:00",
-    "mainMenu": ["돼지국밥", "순대국밥", "수육백반"],
-    "priceRange": "8,500원~13,000원",
-    "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4721,
-    "lng": 127.1378,
-    "mapX": 35,
-    "mapY": 45,
-    "ratings": { "taste": 6.1, "value": 5.9, "portion": 6.5, "cleanliness": 5.4 },
-    "keywords": {
-      "food": ["재료가 신선해요", "가성비가 좋아요"],
-      "mood": ["혼밥하기 좋아요"],
-      "etc": ["친절해요"]
+    "address": "충남 공주시 신금1길 44-20",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47541074727198,
+    "lng": 127.14480339124142,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["든든한 점심", "혼밥"],
-    "description": "양이 넉넉하고 따뜻한 국물 메뉴를 찾을 때 선택하기 좋은 한식 가게입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/18313655",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   },
   {
     "id": "store-004",
-    "name": "니하오마라탕",
-    "category": "중식",
+    "name": "88포장마차 공주점",
+    "category": "기타",
     "type": "restaurant",
-    "address": "충남 공주시 신관동 흑수골길 8",
-    "hours": "11:00 - 22:00",
-    "mainMenu": ["마라탕", "꿔바로우", "마라샹궈"],
-    "priceRange": "7,000원~16,000원",
-    "image": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4698,
-    "lng": 127.1415,
-    "mapX": 66,
-    "mapY": 50,
-    "ratings": { "taste": 6.0, "value": 5.5, "portion": 5.8, "cleanliness": 5.3 },
-    "keywords": {
-      "food": ["특별한 메뉴가 있어요", "재료가 신선해요"],
-      "mood": ["대화하기 좋아요"],
-      "etc": ["화장실이 깨끗해요"]
+    "address": "충남 공주시 번영2로 68-11",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.472801325995,
+    "lng": 127.136877535595,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["친구와 저녁", "매운 메뉴"],
-    "description": "재료를 직접 고르는 재미가 있고 친구들과 방문하기 좋은 마라탕 가게입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/530653420",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   },
   {
     "id": "store-005",
-    "name": "스시하루",
-    "category": "일식",
+    "name": "BBQ 공주신월점",
+    "category": "치킨",
     "type": "restaurant",
-    "address": "충남 공주시 신관동 번영2로 19",
-    "hours": "11:30 - 21:00",
-    "mainMenu": ["연어덮밥", "초밥세트", "우동"],
-    "priceRange": "9,000원~18,000원",
-    "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4689,
-    "lng": 127.1389,
-    "mapX": 48,
-    "mapY": 34,
-    "ratings": { "taste": 6.3, "value": 5.2, "portion": 5.2, "cleanliness": 6.2 },
-    "keywords": {
-      "food": ["재료가 신선해요", "특별한 메뉴가 있어요"],
-      "mood": ["특별한 날 가기 좋아요", "사진이 잘 나와요"],
-      "etc": ["친절해요"]
+    "address": "충남 공주시 번영1로 185",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4737704131814,
+    "lng": 127.14792236219,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["기분 전환", "깔끔한 식사"],
-    "description": "깔끔한 일식 메뉴와 조용한 분위기로 약속 식사에 어울리는 가게입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1921463734",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   },
   {
     "id": "store-006",
-    "name": "브릭파스타",
-    "category": "양식",
+    "name": "BHC치킨 공주대점",
+    "category": "치킨",
     "type": "restaurant",
-    "address": "충남 공주시 신관동 신금1길 17",
-    "hours": "11:30 - 20:30",
-    "mainMenu": ["크림파스타", "토마토파스타", "리조또"],
-    "priceRange": "10,000원~15,000원",
-    "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4709,
-    "lng": 127.1422,
-    "mapX": 73,
-    "mapY": 39,
-    "ratings": { "taste": 5.9, "value": 5.0, "portion": 5.4, "cleanliness": 6.0 },
-    "keywords": {
-      "food": ["특별한 메뉴가 있어요"],
-      "mood": ["대화하기 좋아요", "특별한 날 가기 좋아요"],
-      "etc": ["화장실이 깨끗해요"]
+    "address": "충남 공주시 번영1로 84-13",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47332824187933,
+    "lng": 127.13710720084828,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["데이트", "조용한 저녁"],
-    "description": "차분한 분위기에서 파스타와 리조또를 먹기 좋은 양식 가게입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/26783445",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   },
   {
     "id": "store-007",
-    "name": "카페 느루",
-    "category": "카페",
-    "type": "cafe",
-    "address": "충남 공주시 신관동 대학로 23",
-    "hours": "09:00 - 23:00",
-    "mainMenu": ["아메리카노", "라떼", "바스크치즈케이크"],
-    "priceRange": "3,500원~7,000원",
-    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4717,
-    "lng": 127.1408,
-    "mapX": 60,
-    "mapY": 27,
-    "ratings": { "taste": 6.0, "value": 5.5, "portion": 5.1, "cleanliness": 6.4 },
-    "keywords": {
-      "food": ["특별한 메뉴가 있어요"],
-      "mood": ["대화하기 좋아요", "사진이 잘 나와요"],
-      "etc": ["화장실이 깨끗해요"]
+    "name": "BT버거앤타코 공주신관점",
+    "category": "양식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 83",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.472426623781,
+    "lng": 127.137503948407,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["팀플", "디저트"],
-    "description": "밝은 좌석과 디저트 메뉴가 있어 공부나 팀플 전후로 들르기 좋은 카페입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/131809849",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   },
   {
     "id": "store-008",
-    "name": "블랙빈커피",
-    "category": "카페",
-    "type": "cafe",
-    "address": "충남 공주시 신관동 번영1로 28",
-    "hours": "08:30 - 22:30",
-    "mainMenu": ["콜드브루", "바닐라라떼", "소금빵"],
-    "priceRange": "3,800원~6,500원",
-    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4696,
-    "lng": 127.1399,
-    "mapX": 52,
-    "mapY": 75,
-    "ratings": { "taste": 5.8, "value": 5.7, "portion": 4.9, "cleanliness": 6.1 },
-    "keywords": {
-      "food": ["재료가 신선해요"],
-      "mood": ["혼밥하기 좋아요", "뷰가 좋아요"],
-      "etc": ["친절해요"]
+    "name": "DK치킨 공주점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 관골1길 51",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4740462822225,
+    "lng": 127.134098012611,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["아침 커피", "혼자 쉬기"],
-    "description": "등교 전 커피를 사기 좋고 혼자 머물기에도 부담 없는 카페입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1272498027",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   },
   {
     "id": "store-009",
-    "name": "든든도시락",
-    "category": "도시락",
+    "name": "가마치통닭 공주신관점",
+    "category": "치킨",
     "type": "restaurant",
-    "address": "충남 공주시 신관동 공주대학로 5",
-    "hours": "08:00 - 20:00",
-    "mainMenu": ["제육도시락", "치킨마요", "샐러드볼"],
-    "priceRange": "5,500원~9,500원",
-    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80",
-    "lat": 36.4728,
-    "lng": 127.1411,
-    "mapX": 68,
-    "mapY": 68,
-    "ratings": { "taste": 5.6, "value": 6.1, "portion": 6.2, "cleanliness": 5.8 },
-    "keywords": {
-      "food": ["음식이 빨리 나와요", "가성비가 좋아요"],
-      "mood": ["혼밥하기 좋아요"],
-      "etc": ["주차하기 편해요"]
+    "address": "충남 공주시 공주대학로 94-8",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4729891723085,
+    "lng": 127.138090733885,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
     },
-    "recommendFor": ["포장", "빠른 점심"],
-    "description": "수업 사이에 빠르게 포장하기 좋고 메뉴 선택지가 넓은 도시락 가게입니다."
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/993673188",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-010",
+    "name": "간이역 대아역점",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 신금2길 47",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4727776315713,
+    "lng": 127.146217778989,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/19730949",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-011",
+    "name": "감탄떡볶이 공주신관점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 신금2길 31",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.473585511625,
+    "lng": 127.14659420605547,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/15287058",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-012",
+    "name": "고기백화점 정육식당",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 48-1",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4710677011305,
+    "lng": 127.135904886448,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/361541517",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-013",
+    "name": "고봉민김밥인 공주터미널점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 매산동길 22-2",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4700605196489,
+    "lng": 127.136416374139,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/26426073",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-014",
+    "name": "곰선생 동태씨",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 무령로 466-3",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4673283038586,
+    "lng": 127.143246443366,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1327398348",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-015",
+    "name": "공주꼬막짬뽕",
+    "category": "중식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 71",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.471385857329,
+    "lng": 127.13743851115427,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1291598549",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-016",
+    "name": "공주알밤닭강정",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 매산동길 19-1",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4702879865342,
+    "lng": 127.136088740679,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1392631104",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-017",
+    "name": "광안천지식당 충남공주점",
+    "category": "국밥",
+    "type": "restaurant",
+    "address": "충남 공주시 매산동길 19-1",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4702915886081,
+    "lng": 127.136090978486,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1718604940",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-018",
+    "name": "광희이모꼬마김밥 본점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 신금2길 31",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.473690844418144,
+    "lng": 127.1466780897066,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1578262915",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-019",
+    "name": "교촌치킨 신관점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 138",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47425871425126,
+    "lng": 127.1428496929117,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/21297222",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-020",
+    "name": "교토앤하루",
+    "category": "일식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 26",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4732660677499,
+    "lng": 127.14020454624,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/504802168",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-021",
+    "name": "국밥해장국",
+    "category": "국밥",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 95",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4734404863835,
+    "lng": 127.137455528269,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1899674266",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-022",
+    "name": "국수정",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 19",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4738092173731,
+    "lng": 127.139649853308,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1316256002",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-023",
+    "name": "군자대한곱창 공주신관점",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 54-27",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4721454084984,
+    "lng": 127.135977062132,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1367740496",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-024",
+    "name": "굽네치킨 공주신관점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 48",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.473099175608006,
+    "lng": 127.14263556392396,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/8701351",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-025",
+    "name": "그아줌마네",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 8",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4734430311176,
+    "lng": 127.13837272071,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/21491002",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-026",
+    "name": "금성회관",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 9",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4689879961169,
+    "lng": 127.13172840107,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/8799840",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-027",
+    "name": "김가네 공주신관점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 64",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47068297360481,
+    "lng": 127.13819933494531,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/12572929",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-028",
+    "name": "김밥천국 종합터미널점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 신관로 74",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.468505195531,
+    "lng": 127.13475790611432,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/21259196",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-029",
+    "name": "김성구의성마늘치킨",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 신금2길 47",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4727776370395,
+    "lng": 127.146213315836,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/875949657",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-030",
+    "name": "까우",
+    "category": "양식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 58",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4717224068192,
+    "lng": 127.136289856271,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/797932040",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-031",
+    "name": "까치집",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 62",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4727236211156,
+    "lng": 127.143196118186,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/16625597",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-032",
+    "name": "깡우동 충남공주점",
+    "category": "돈까스",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 78-7",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4723882783474,
+    "lng": 127.137152408302,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/508359605",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-033",
+    "name": "꼭지네",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 전막1길 16-15",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.471003284127654,
+    "lng": 127.12981938884373,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/9747150",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-034",
+    "name": "꽃돼지무한리필삼겹살",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 55",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4717056576747,
+    "lng": 127.135962904714,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/553994591",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-035",
+    "name": "꾸브라꼬숯불치킨 공주점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 신금2길 38-6",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4738440131952,
+    "lng": 127.145966494063,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1204359843",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-036",
+    "name": "나루키친",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 58-1",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.470303366691,
+    "lng": 127.138387223751,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/763545518",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-037",
+    "name": "네네치킨 신관점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 97-12",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47488761796978,
+    "lng": 127.13912623627508,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/8198650",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-038",
+    "name": "노브랜드버거 공주신관점",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 25",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4735543483729,
+    "lng": 127.140282055802,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/536382562",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-039",
+    "name": "노상치킨 신관점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 전막2길 16-9",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4706211006692,
+    "lng": 127.130728096004,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/221834190",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-040",
+    "name": "다복손칼국수",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 신금2길 50",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4726669128741,
+    "lng": 127.145378497559,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/23480651",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-041",
+    "name": "닭장수후라이드 신관점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 52-3",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4712538290744,
+    "lng": 127.136266720556,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/885913563",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-042",
+    "name": "대만족",
+    "category": "족발/보쌈",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 77",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4731992811685,
+    "lng": 127.137189542683,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/43571876",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-043",
+    "name": "대박식당",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 한적2길 27-10",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4768799965517,
+    "lng": 127.139202327757,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/812236691",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-044",
+    "name": "대부곱창 공주본점",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 54-21",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47234627942164,
+    "lng": 127.13605440214458,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/18210497",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-045",
+    "name": "대우분식점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 11",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4684962446292,
+    "lng": 127.133097685011,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/12172290",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-046",
+    "name": "더덕순대1999",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 56",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47219605039656,
+    "lng": 127.13502761961287,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/10810749",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-047",
+    "name": "더덕장어구이",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 관골1길 42",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.473294614030735,
+    "lng": 127.13338260679184,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/400993753",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-048",
+    "name": "덕팔이통닭",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 67",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4735548681527,
+    "lng": 127.135146020008,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1077441139",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-049",
+    "name": "던킨 공주터미널점",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 신관로 74",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.468408654144866,
+    "lng": 127.13486150175132,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1012488221",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-050",
+    "name": "덤&덤 공주대학교점",
+    "category": "피자",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 56-29",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.471948936954554,
+    "lng": 127.14142060466907,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/648640490",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-051",
+    "name": "덤앤덤피자치킨",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 신관동 182",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47192187042549,
+    "lng": 127.14144733418487,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1433375352",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-052",
+    "name": "덮밥90도씨 공주신관점",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 64",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4720751765751,
+    "lng": 127.13671447059,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1428926215",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-053",
+    "name": "덮밥장사장 공주점",
+    "category": "일식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 78",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.472020651264685,
+    "lng": 127.13789375433828,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1945031065",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-054",
+    "name": "도깨비아구찜",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 전막3길 40-3",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4718182735092,
+    "lng": 127.13278759954,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/132583822",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-055",
+    "name": "도미노피자 공주점",
+    "category": "피자",
+    "type": "restaurant",
+    "address": "충남 공주시 신관로 31",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4707107387982,
+    "lng": 127.131981246519,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/7833637",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-056",
+    "name": "도스마스 공주대점",
+    "category": "양식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 66",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4708876518945,
+    "lng": 127.138100395308,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/25515963",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-057",
+    "name": "도향촌마라탕",
+    "category": "중식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 83",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4723976966714,
+    "lng": 127.137582002293,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/490745757",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-058",
+    "name": "돈벼락",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 신관로 53",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4695478314097,
+    "lng": 127.133965300596,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/8919972",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-059",
+    "name": "돈수레식당",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 전막3길 35",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4715622191883,
+    "lng": 127.132087572776,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/376527571",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-060",
+    "name": "동네분식",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 17",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.46893460629061,
+    "lng": 127.13354919168879,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/10312643",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-061",
+    "name": "동대문매운김밥 공주대학점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 55",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4717399385925,
+    "lng": 127.13593060708,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/591006448",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-062",
+    "name": "동대문엽기떡볶이 공주신관점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 6-1",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47346032124916,
+    "lng": 127.1382276973579,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/25973239",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-063",
+    "name": "두끼떡볶이 공주점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 33",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47343468289438,
+    "lng": 127.14088660389571,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/632950495",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-064",
+    "name": "두찜 공주신관점",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 41",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.46887809408927,
+    "lng": 127.13729015430448,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1724211245",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-065",
+    "name": "땅스떡볶이 신관점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 한적2길 6",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4747624434718,
+    "lng": 127.140589967476,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/752533424",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-066",
+    "name": "떡싸롱",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 매산동길 34-2",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.470510062011385,
+    "lng": 127.13732204190849,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/506167580",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-067",
+    "name": "또순이칼국수",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영3로 64",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4720760789908,
+    "lng": 127.136713356393,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/994761396",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-068",
+    "name": "라라코스트 공주점",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 98",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4737229768756,
+    "lng": 127.1378666431252,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/27603179",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-069",
+    "name": "롯데리아 공주신관점",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 34",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4730471328824,
+    "lng": 127.140929418481,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/17713458",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-070",
+    "name": "마시기똥차",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 54",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4720448271084,
+    "lng": 127.134875611176,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/24212978",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-071",
+    "name": "맛고을",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 전막3길 18-6",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.46983628219266,
+    "lng": 127.13146317238613,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/10344744",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-072",
+    "name": "맥시칸치킨 신관점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 신금1길 30-5",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4767786450007,
+    "lng": 127.143364260245,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/2139046927",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-073",
+    "name": "먹신",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 53",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4721459964321,
+    "lng": 127.134663787903,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/976083635",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-074",
+    "name": "메리포핀스",
+    "category": "양식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 67",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4735765111495,
+    "lng": 127.135132667955,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/9757824",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-075",
+    "name": "멕시카나치킨 신관점",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 신금1길 70",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.476762768043926,
+    "lng": 127.14751853274213,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/10341452",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-076",
+    "name": "면식당 공주대점",
+    "category": "일식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 67",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4709502406765,
+    "lng": 127.137746808927,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/141628154",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-077",
+    "name": "명동샤브샤브칼국수",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 84-8",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47341601164152,
+    "lng": 127.136796047226,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/9759257",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-078",
+    "name": "명륜진사갈비 충남공주점",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 64-1",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47309784992521,
+    "lng": 127.13526015351137,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1564539842",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-079",
+    "name": "명품참치초밥",
+    "category": "일식",
+    "type": "restaurant",
+    "address": "충남 공주시 공주대학로 17-31",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4668506394994,
+    "lng": 127.135572854967,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1777009236",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-080",
+    "name": "명품참치한판",
+    "category": "일식",
+    "type": "restaurant",
+    "address": "충남 공주시 전막3길 18-6",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.46987421327687,
+    "lng": 127.13138848122998,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/2124495646",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-081",
+    "name": "모락로제떡볶이&닭강정 공주신관점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 56",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4725786916311,
+    "lng": 127.134541799718,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/901682176",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-082",
+    "name": "목구멍 공주점",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 75",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47308081729476,
+    "lng": 127.13676310012536,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1178411154",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-083",
+    "name": "목화밀면양꼬치 공주직영점",
+    "category": "중식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 101-17",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47542915697738,
+    "lng": 127.13994733842645,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/202487713",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-084",
+    "name": "무모한초밥 공주신관점",
+    "category": "일식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 26",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4732787442956,
+    "lng": 127.140153242363,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/527000140",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-085",
+    "name": "무쇠통삼겹살",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 40-13",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4706281882574,
+    "lng": 127.13488654597,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/925129178",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-086",
+    "name": "무조건회수산",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 7",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.469248422905665,
+    "lng": 127.13091769843619,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/8978106",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-087",
+    "name": "믹스토랑 공주대점",
+    "category": "양식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 53",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.473490665773326,
+    "lng": 127.14306586466125,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1782665402",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-088",
+    "name": "민경이네낙지쭈꾸미 공주점",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 72-8",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.472969268119115,
+    "lng": 127.13580332160645,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/339235879",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-089",
+    "name": "바다향굴&복어 공주본점",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 157-7",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4750538882467,
+    "lng": 127.144802727375,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/2100069343",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-090",
+    "name": "바보아저씨",
+    "category": "돈까스",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 54",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4723987411652,
+    "lng": 127.134291552758,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/21291504",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-091",
+    "name": "바푸리 신관점",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 173",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4743700481494,
+    "lng": 127.146899184819,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/24878276",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-092",
+    "name": "방가네소고기국밥 공주점",
+    "category": "국밥",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 40-16",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4705973195441,
+    "lng": 127.134290676817,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1297410784",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-093",
+    "name": "방일해장국 공주점",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 번영1로 17",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47007685395277,
+    "lng": 127.13149816693645,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/9009981",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-094",
+    "name": "배꼽",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 관골1길 34-10",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4720395772711,
+    "lng": 127.1331305216,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/24245462",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-095",
+    "name": "배꼽부엉이",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 전막1길 16-4",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4712289092392,
+    "lng": 127.128678333602,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/925436146",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-096",
+    "name": "백기삼지글지글",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 54-19",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.472408174237344,
+    "lng": 127.13630444629604,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/24660562",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-097",
+    "name": "백채김치찌개 공주대점",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 흑수골길 33",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4733688455244,
+    "lng": 127.1409311167107,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/754594838",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-098",
+    "name": "버거킹 공주신관DT점",
+    "category": "기타",
+    "type": "restaurant",
+    "address": "충남 공주시 일신역길 10-8",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47458331837741,
+    "lng": 127.14117879518153,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/341621574",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-099",
+    "name": "번영집",
+    "category": "고기",
+    "type": "restaurant",
+    "address": "충남 공주시 번영2로 75",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.4731465840343,
+    "lng": 127.136778836815,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1937666700",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
+  },
+  {
+    "id": "store-100",
+    "name": "범식이네옛날통닭",
+    "category": "치킨",
+    "type": "restaurant",
+    "address": "충남 공주시 신금2길 31",
+    "hours": "영업시간 확인 중",
+    "mainMenu": [
+      "대표메뉴 확인 중"
+    ],
+    "priceRange": "가격대 확인 중",
+    "avgPricePerPerson": "가격대 확인 중",
+    "image": "",
+    "lat": 36.47381686952816,
+    "lng": 127.14678990774006,
+    "ratings": {
+      "taste": 0.0,
+      "value": 0.0,
+      "portion": 0.0,
+      "cleanliness": 0.0
+    },
+    "ratingCount": 0,
+    "keywords": {
+      "food": [],
+      "mood": [],
+      "etc": []
+    },
+    "recommendFor": [],
+    "description": "한 줄 평가 준비 중",
+    "kakaoPlaceUrl": "http://place.map.kakao.com/1982568362",
+    "verificationStatus": "미검수",
+    "notes": "영업시간, 메뉴, 가격대는 수동 검수 필요",
+    "menuSourceUrl": "",
+    "hoursSourceUrl": "",
+    "priceSourceUrl": "",
+    "mapSourceUrl": "",
+    "lastVerifiedDate": "",
+    "sourceCheckedDate": "2026-05-29"
   }
 ]

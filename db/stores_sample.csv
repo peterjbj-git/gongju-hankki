@@ -1,2 +1,2 @@
-"id","name","category","type","address","hours","mainMenu","priceRange","image","lat","lng","taste","value","portion","cleanliness","foodKeywords","moodKeywords","etcKeywords","recommendFor","description"
-"store-010","새 가게","카페","cafe","충남 공주시 신관동 예시로 10","10:00 - 22:00","아메리카노;라떼","3,500원~6,000원","이미지 URL","36.47","127.14","5.8","5.5","5","6","재료가 신선해요","대화하기 좋아요","친절해요","팀플;디저트","가게에 대한 간단한 설명입니다."
+id,name,category,type,address,hours,mainMenu,priceRange,avgPricePerPerson,description,verificationStatus,lastVerifiedDate,menuSourceUrl,hoursSourceUrl,priceSourceUrl,mapSourceUrl,notes,lat,lng,taste,value,portion,cleanliness,ratingCount,foodKeywords,moodKeywords,etcKeywords,recommendFor,image,kakaoPlaceUrl,sourceCheckedDate
+store-001,예시식당,한식,restaurant,충남 공주시 신관동 예시로 10,확인 필요,김치찌개;제육볶음,"8,000원~12,000원","10,000원대",확인 필요,검수필요,,,,,,"영업시간, 메뉴, 가격대는 수동 검수 필요",36.47,127.14,0,0,0,0,0,,,,점심;혼밥,,http://place.map.kakao.com/example,2026-05-29
