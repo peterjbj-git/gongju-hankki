@@ -1,6 +1,9 @@
 const DATA_URL = "data/stores.json";
 const REVIEW_KEY = "gongju-hankki-reviews";
 const COMPARE_KEY = "gongju-hankki-compare";
+const KAKAO_KEY_PLACEHOLDER = "KAKAO_JAVASCRIPT_KEY_HERE";
+const KAKAO_SDK_TIMEOUT_MS = 7000;
+const MAP_DEBUG_PREFIX = "[공주한끼 지도]";
 
 const ratingLabels = {
   taste: "맛",
@@ -27,6 +30,8 @@ const keywordGroups = {
 let stores = [];
 let selectedStoreId = null;
 let compareIds = [];
+let kakaoMap = null;
+let mapMarkers = [];
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -85,7 +90,8 @@ async function init() {
 
   compareIds = loadCompareIds();
   bindEvents();
-  renderMapPins();
+  await initMap();
+  renderMapMarkers();
   renderStoreList(stores);
   renderSearchResults("", "home");
   renderCompare();
@@ -106,7 +112,8 @@ function bindEvents() {
   elements.closeReviewButton.addEventListener("click", closeReviewModal);
   elements.fitMapButton.addEventListener("click", () => {
     selectedStoreId = null;
-    renderMapPins();
+    fitMapToStores();
+    renderMapMarkers();
   });
 
   elements.homeSearchInput.addEventListener("input", (event) => {
@@ -141,20 +148,231 @@ function filterStores(query) {
   });
 }
 
-// MVP에서는 mapX/mapY 퍼센트 좌표를 사용한다. 실제 지도 API로 바꿀 때 이 함수만 교체하면 된다.
-function renderMapPins() {
-  elements.customMap.querySelectorAll(".map-pin").forEach((pin) => pin.remove());
-  stores.forEach((store) => {
-    const pin = document.createElement("button");
-    pin.className = `map-pin ${store.id === selectedStoreId ? "selected" : ""}`;
-    pin.type = "button";
-    pin.style.left = `${store.mapX}%`;
-    pin.style.top = `${store.mapY}%`;
-    pin.textContent = store.type === "cafe" ? "C" : "식";
-    pin.setAttribute("aria-label", `${store.name} 상세정보 열기`);
-    pin.addEventListener("click", () => openDetail(store.id));
-    elements.customMap.appendChild(pin);
+async function initMap() {
+  const sdkStatus = getKakaoSdkStatus();
+  logMapDebug("SDK script 상태", sdkStatus);
+
+  if (!sdkStatus.scriptFound) {
+    logMapError("index.html에서 카카오맵 SDK script를 찾지 못했습니다.");
+    renderMapFallback("카카오맵 SDK script가 없습니다. index.html 설정을 확인해 주세요.");
+    return false;
+  }
+
+  if (!sdkStatus.hasAppKeyParam) {
+    logMapError("카카오맵 SDK URL에 appkey 파라미터가 없습니다.", sdkStatus.safeSrc);
+    renderMapFallback("카카오맵 SDK URL에 appkey 파라미터가 없습니다. script 주소를 확인해 주세요.");
+    return false;
+  }
+
+  if (sdkStatus.isPlaceholderKey) {
+    logMapDebug("카카오맵 JavaScript 키가 placeholder 상태입니다.");
+    renderMapFallback("카카오맵 JavaScript 키를 설정하면 실제 지도와 마커가 표시됩니다.");
+    return false;
+  }
+
+  const sdkReady = await waitForKakaoSdk(KAKAO_SDK_TIMEOUT_MS);
+  if (!sdkReady) {
+    logMapError("카카오맵 SDK를 불러오지 못했습니다.", {
+      ...getKakaoSdkStatus(),
+      kakaoExists: Boolean(window.kakao),
+      kakaoMapsExists: Boolean(window.kakao && window.kakao.maps),
+      protocol: window.location.protocol,
+      host: window.location.host,
+      href: window.location.href,
+    });
+    renderMapFallback("카카오맵 SDK를 불러오지 못했습니다. 네트워크와 도메인 등록 상태를 확인해 주세요.");
+    return false;
+  }
+
+  return new Promise((resolve) => {
+    let resolved = false;
+    const finish = (result) => {
+      if (resolved) return;
+      resolved = true;
+      resolve(result);
+    };
+
+    const timeoutId = window.setTimeout(() => {
+      logMapError("kakao.maps.load() 콜백 대기 시간이 초과되었습니다.");
+      renderMapFallback("카카오맵 로딩 시간이 초과되었습니다. 잠시 후 다시 시도해 주세요.");
+      finish(false);
+    }, 5000);
+
+    window.kakao.maps.load(() => {
+      window.clearTimeout(timeoutId);
+      try {
+        logMapDebug("kakao.maps.load() 완료. 지도 초기화를 시작합니다.");
+        const center = getMapCenter();
+        kakaoMap = new window.kakao.maps.Map(elements.customMap, {
+          center,
+          level: 4,
+        });
+        fitMapToStores();
+        logMapDebug("카카오맵 초기화 완료", {
+          markerSourceCount: stores.filter(hasStoreCoordinate).length,
+        });
+        finish(true);
+      } catch (error) {
+        logMapError("카카오맵 초기화 중 오류가 발생했습니다.", error);
+        renderMapFallback("카카오맵을 초기화하지 못했습니다. API 키와 도메인 설정을 확인해 주세요.");
+        finish(false);
+      }
+    });
   });
+}
+
+function renderMapMarkers() {
+  if (!kakaoMap || !window.kakao || !window.kakao.maps) return;
+
+  mapMarkers.forEach((marker) => marker.setMap(null));
+  mapMarkers = stores
+    .filter(hasStoreCoordinate)
+    .map((store) => {
+      const marker = new window.kakao.maps.Marker({
+        map: kakaoMap,
+        position: new window.kakao.maps.LatLng(Number(store.lat), Number(store.lng)),
+        title: store.name,
+        zIndex: store.id === selectedStoreId ? 2 : 1,
+      });
+      window.kakao.maps.event.addListener(marker, "click", () => openDetail(store.id));
+      return marker;
+    });
+}
+
+function focusStoreOnMap(storeId) {
+  const store = findStore(storeId);
+  if (!kakaoMap || !window.kakao || !window.kakao.maps || !hasStoreCoordinate(store)) return;
+  const position = new window.kakao.maps.LatLng(Number(store.lat), Number(store.lng));
+  kakaoMap.panTo(position);
+}
+
+function fitMapToStores() {
+  if (!kakaoMap || !window.kakao || !window.kakao.maps) return;
+  const coordinateStores = stores.filter(hasStoreCoordinate);
+  if (!coordinateStores.length) return;
+
+  const bounds = new window.kakao.maps.LatLngBounds();
+  coordinateStores.forEach((store) => {
+    bounds.extend(new window.kakao.maps.LatLng(Number(store.lat), Number(store.lng)));
+  });
+  kakaoMap.setBounds(bounds);
+}
+
+function getMapCenter() {
+  const coordinateStores = stores.filter(hasStoreCoordinate);
+  if (!coordinateStores.length) {
+    return new window.kakao.maps.LatLng(36.4712, 127.1393);
+  }
+  const totals = coordinateStores.reduce((acc, store) => ({
+    lat: acc.lat + Number(store.lat),
+    lng: acc.lng + Number(store.lng),
+  }), { lat: 0, lng: 0 });
+  return new window.kakao.maps.LatLng(totals.lat / coordinateStores.length, totals.lng / coordinateStores.length);
+}
+
+function hasStoreCoordinate(store) {
+  return store && Number.isFinite(Number(store.lat)) && Number.isFinite(Number(store.lng));
+}
+
+function waitForKakaoSdk(timeoutMs) {
+  const startedAt = Date.now();
+  return new Promise((resolve) => {
+    const check = () => {
+      if (window.kakao && window.kakao.maps && typeof window.kakao.maps.load === "function") {
+        resolve(true);
+        return;
+      }
+
+      if (window.__kakaoSdkLoadError) {
+        logMapError("카카오맵 SDK script onerror가 발생했습니다.");
+        resolve(false);
+        return;
+      }
+
+      if (Date.now() - startedAt >= timeoutMs) {
+        resolve(false);
+        return;
+      }
+
+      window.setTimeout(check, 100);
+    };
+
+    check();
+  });
+}
+
+function getKakaoSdkStatus() {
+  const script = document.querySelector("#kakaoMapsSdk") || Array.from(document.scripts).find((item) => (
+    item.src.includes("dapi.kakao.com/v2/maps/sdk.js")
+  ));
+  const src = script ? script.src : "";
+  const status = {
+    scriptFound: Boolean(script),
+    safeSrc: redactKakaoAppKey(src),
+    hasAppKeyParam: false,
+    isPlaceholderKey: false,
+    autoloadFalse: false,
+    loadedFlag: Boolean(window.__kakaoSdkLoaded),
+    loadErrorFlag: Boolean(window.__kakaoSdkLoadError),
+  };
+
+  if (!src) return status;
+
+  try {
+    const url = new URL(src, window.location.href);
+    const appKey = url.searchParams.get("appkey") || "";
+    status.hasAppKeyParam = url.searchParams.has("appkey");
+    status.isPlaceholderKey = appKey === KAKAO_KEY_PLACEHOLDER;
+    status.autoloadFalse = url.searchParams.get("autoload") === "false";
+  } catch (error) {
+    logMapError("카카오맵 SDK script URL을 해석하지 못했습니다.", error);
+  }
+
+  return status;
+}
+
+function redactKakaoAppKey(src) {
+  if (!src) return "";
+  try {
+    const url = new URL(src, window.location.href);
+    if (url.searchParams.has("appkey")) {
+      const appKey = url.searchParams.get("appkey") || "";
+      const redacted = appKey === KAKAO_KEY_PLACEHOLDER
+        ? KAKAO_KEY_PLACEHOLDER
+        : `${appKey.slice(0, 4)}...${appKey.slice(-4)}`;
+      url.searchParams.set("appkey", redacted);
+    }
+    return url.toString();
+  } catch {
+    return src.replace(/appkey=([^&]+)/, "appkey=REDACTED");
+  }
+}
+
+function logMapDebug(message, data) {
+  if (data === undefined) {
+    console.info(MAP_DEBUG_PREFIX, message);
+    return;
+  }
+  console.info(MAP_DEBUG_PREFIX, message, data);
+}
+
+function logMapError(message, data) {
+  if (data === undefined) {
+    console.error(MAP_DEBUG_PREFIX, message);
+    return;
+  }
+  console.error(MAP_DEBUG_PREFIX, message, data);
+}
+
+function renderMapFallback(message) {
+  kakaoMap = null;
+  mapMarkers = [];
+  elements.customMap.innerHTML = `
+    <div class="map-fallback" role="status">
+      <strong>지도를 표시할 수 없습니다</strong>
+      <p>${message}</p>
+    </div>
+  `;
 }
 
 function renderStoreList(list) {
@@ -183,10 +401,14 @@ function renderStoreList(list) {
 
   elements.storeList.querySelectorAll(".store-card").forEach((card) => {
     const storeId = card.dataset.storeId;
-    card.addEventListener("click", () => openDetail(storeId));
+    card.addEventListener("click", () => {
+      openDetail(storeId);
+      focusStoreOnMap(storeId);
+    });
     card.querySelector(".detail-action").addEventListener("click", (event) => {
       event.stopPropagation();
       openDetail(storeId);
+      focusStoreOnMap(storeId);
     });
     card.querySelector(".compare-action").addEventListener("click", (event) => {
       event.stopPropagation();
@@ -252,7 +474,8 @@ function openDetail(storeId) {
   elements.detailKeywords.innerHTML = getTopKeywords(store).map((keyword) => `<span class="tag">${keyword}</span>`).join("");
   elements.detailRatings.innerHTML = Object.entries(ratingLabels).map(([key, label]) => renderRatingBar(label, ratings[key])).join("");
   elements.detailPanel.classList.remove("hidden");
-  renderMapPins();
+  focusStoreOnMap(storeId);
+  renderMapMarkers();
 }
 
 function closeDetail() {

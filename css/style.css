@@ -235,6 +235,33 @@ h3 {
     #e8ecef;
 }
 
+.kakao-map {
+  background: #e8ecef;
+}
+
+.map-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  padding: 28px;
+  background: #e8ecef;
+  color: var(--text);
+  text-align: center;
+}
+
+.map-fallback strong {
+  font-size: 18px;
+}
+
+.map-fallback p {
+  max-width: 300px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .campus-zone,
 .district {
   position: absolute;

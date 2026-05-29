@@ -32,18 +32,11 @@
           <div class="map-toolbar">
             <div>
               <strong>신관동 주변</strong>
-              <span>샘플 지도</span>
+              <span>카카오맵</span>
             </div>
             <button id="fitMapButton" class="pill-button light" type="button">전체 보기</button>
           </div>
-          <div id="customMap" class="custom-map" role="application" aria-label="가게 핀이 표시된 지도">
-            <div class="campus-zone">공주대학교</div>
-            <div class="road road-main"></div>
-            <div class="road road-sub"></div>
-            <div class="road road-cross"></div>
-            <div class="district district-left">신관동</div>
-            <div class="district district-right">카페 거리</div>
-          </div>
+          <div id="customMap" class="custom-map kakao-map" role="application" aria-label="가게 핀이 표시된 지도"></div>
         </section>
 
         <section id="bottomSheet" class="bottom-sheet" aria-label="가게 리스트">
@@ -124,6 +117,12 @@
       </section>
     </main>
 
+    <script
+      id="kakaoMapsSdk"
+      src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d5085945b33f103c3d65d2e313eb92bf&autoload=false"
+      onload="window.__kakaoSdkLoaded = true"
+      onerror="window.__kakaoSdkLoadError = true"
+    ></script>
     <script src="js/app.js"></script>
   </body>
 </html>

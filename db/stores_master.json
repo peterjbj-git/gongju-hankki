@@ -1,0 +1,381 @@
+[
+  {
+    "id": "store-001",
+    "name": "신관돈까스",
+    "category": "돈까스",
+    "type": "restaurant",
+    "address": "충남 공주시 신관동 대학로 12",
+    "hours": "11:00 - 20:30",
+    "mainMenu": [
+      "등심돈까스",
+      "치즈돈까스",
+      "카레돈까스"
+    ],
+    "priceRange": "8,000원~11,000원",
+    "image": "https://images.unsplash.com/photo-1611765083444-a3ce30f1c885?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4712,
+    "lng": 127.1393,
+    "mapX": 43,
+    "mapY": 56,
+    "ratings": {
+      "taste": 6.2,
+      "value": 5.8,
+      "portion": 6,
+      "cleanliness": 5.6
+    },
+    "keywords": {
+      "food": [
+        "가성비가 좋아요",
+        "음식이 빨리 나와요"
+      ],
+      "mood": [
+        "혼밥하기 좋아요"
+      ],
+      "etc": [
+        "친절해요"
+      ]
+    },
+    "recommendFor": [
+      "빠른 점심",
+      "혼밥"
+    ],
+    "description": "공주대 근처에서 빠르게 한 끼 먹기 좋은 돈까스 가게입니다."
+  },
+  {
+    "id": "store-002",
+    "name": "공주분식",
+    "category": "분식",
+    "type": "restaurant",
+    "address": "충남 공주시 신관동 번영1로 44",
+    "hours": "10:30 - 21:00",
+    "mainMenu": [
+      "떡볶이",
+      "김밥",
+      "라면"
+    ],
+    "priceRange": "3,500원~8,000원",
+    "image": "https://images.unsplash.com/photo-1635363638580-c2809d049eee?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4703,
+    "lng": 127.1404,
+    "mapX": 55,
+    "mapY": 62,
+    "ratings": {
+      "taste": 5.7,
+      "value": 6.4,
+      "portion": 5.9,
+      "cleanliness": 5.1
+    },
+    "keywords": {
+      "food": [
+        "가성비가 좋아요",
+        "음식이 빨리 나와요"
+      ],
+      "mood": [
+        "대화하기 좋아요"
+      ],
+      "etc": [
+        "친절해요"
+      ]
+    },
+    "recommendFor": [
+      "공강 간식",
+      "가벼운 저녁"
+    ],
+    "description": "가격 부담이 적고 회전이 빨라 공강 시간에 들르기 좋은 분식집입니다."
+  },
+  {
+    "id": "store-003",
+    "name": "청춘국밥",
+    "category": "한식",
+    "type": "restaurant",
+    "address": "충남 공주시 신관동 공주대학로 31",
+    "hours": "09:00 - 22:00",
+    "mainMenu": [
+      "돼지국밥",
+      "순대국밥",
+      "수육백반"
+    ],
+    "priceRange": "8,500원~13,000원",
+    "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4721,
+    "lng": 127.1378,
+    "mapX": 35,
+    "mapY": 45,
+    "ratings": {
+      "taste": 6.1,
+      "value": 5.9,
+      "portion": 6.5,
+      "cleanliness": 5.4
+    },
+    "keywords": {
+      "food": [
+        "재료가 신선해요",
+        "가성비가 좋아요"
+      ],
+      "mood": [
+        "혼밥하기 좋아요"
+      ],
+      "etc": [
+        "친절해요"
+      ]
+    },
+    "recommendFor": [
+      "든든한 점심",
+      "혼밥"
+    ],
+    "description": "양이 넉넉하고 따뜻한 국물 메뉴를 찾을 때 선택하기 좋은 한식 가게입니다."
+  },
+  {
+    "id": "store-004",
+    "name": "니하오마라탕",
+    "category": "중식",
+    "type": "restaurant",
+    "address": "충남 공주시 신관동 흑수골길 8",
+    "hours": "11:00 - 22:00",
+    "mainMenu": [
+      "마라탕",
+      "꿔바로우",
+      "마라샹궈"
+    ],
+    "priceRange": "7,000원~16,000원",
+    "image": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4698,
+    "lng": 127.1415,
+    "mapX": 66,
+    "mapY": 50,
+    "ratings": {
+      "taste": 6,
+      "value": 5.5,
+      "portion": 5.8,
+      "cleanliness": 5.3
+    },
+    "keywords": {
+      "food": [
+        "특별한 메뉴가 있어요",
+        "재료가 신선해요"
+      ],
+      "mood": [
+        "대화하기 좋아요"
+      ],
+      "etc": [
+        "화장실이 깨끗해요"
+      ]
+    },
+    "recommendFor": [
+      "친구와 저녁",
+      "매운 메뉴"
+    ],
+    "description": "재료를 직접 고르는 재미가 있고 친구들과 방문하기 좋은 마라탕 가게입니다."
+  },
+  {
+    "id": "store-005",
+    "name": "스시하루",
+    "category": "일식",
+    "type": "restaurant",
+    "address": "충남 공주시 신관동 번영2로 19",
+    "hours": "11:30 - 21:00",
+    "mainMenu": [
+      "연어덮밥",
+      "초밥세트",
+      "우동"
+    ],
+    "priceRange": "9,000원~18,000원",
+    "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4689,
+    "lng": 127.1389,
+    "mapX": 48,
+    "mapY": 34,
+    "ratings": {
+      "taste": 6.3,
+      "value": 5.2,
+      "portion": 5.2,
+      "cleanliness": 6.2
+    },
+    "keywords": {
+      "food": [
+        "재료가 신선해요",
+        "특별한 메뉴가 있어요"
+      ],
+      "mood": [
+        "특별한 날 가기 좋아요",
+        "사진이 잘 나와요"
+      ],
+      "etc": [
+        "친절해요"
+      ]
+    },
+    "recommendFor": [
+      "기분 전환",
+      "깔끔한 식사"
+    ],
+    "description": "깔끔한 일식 메뉴와 조용한 분위기로 약속 식사에 어울리는 가게입니다."
+  },
+  {
+    "id": "store-006",
+    "name": "브릭파스타",
+    "category": "양식",
+    "type": "restaurant",
+    "address": "충남 공주시 신관동 신금1길 17",
+    "hours": "11:30 - 20:30",
+    "mainMenu": [
+      "크림파스타",
+      "토마토파스타",
+      "리조또"
+    ],
+    "priceRange": "10,000원~15,000원",
+    "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4709,
+    "lng": 127.1422,
+    "mapX": 73,
+    "mapY": 39,
+    "ratings": {
+      "taste": 5.9,
+      "value": 5,
+      "portion": 5.4,
+      "cleanliness": 6
+    },
+    "keywords": {
+      "food": [
+        "특별한 메뉴가 있어요"
+      ],
+      "mood": [
+        "대화하기 좋아요",
+        "특별한 날 가기 좋아요"
+      ],
+      "etc": [
+        "화장실이 깨끗해요"
+      ]
+    },
+    "recommendFor": [
+      "데이트",
+      "조용한 저녁"
+    ],
+    "description": "차분한 분위기에서 파스타와 리조또를 먹기 좋은 양식 가게입니다."
+  },
+  {
+    "id": "store-007",
+    "name": "카페 느루",
+    "category": "카페",
+    "type": "cafe",
+    "address": "충남 공주시 신관동 대학로 23",
+    "hours": "09:00 - 23:00",
+    "mainMenu": [
+      "아메리카노",
+      "라떼",
+      "바스크치즈케이크"
+    ],
+    "priceRange": "3,500원~7,000원",
+    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4717,
+    "lng": 127.1408,
+    "mapX": 60,
+    "mapY": 27,
+    "ratings": {
+      "taste": 6,
+      "value": 5.5,
+      "portion": 5.1,
+      "cleanliness": 6.4
+    },
+    "keywords": {
+      "food": [
+        "특별한 메뉴가 있어요"
+      ],
+      "mood": [
+        "대화하기 좋아요",
+        "사진이 잘 나와요"
+      ],
+      "etc": [
+        "화장실이 깨끗해요"
+      ]
+    },
+    "recommendFor": [
+      "팀플",
+      "디저트"
+    ],
+    "description": "밝은 좌석과 디저트 메뉴가 있어 공부나 팀플 전후로 들르기 좋은 카페입니다."
+  },
+  {
+    "id": "store-008",
+    "name": "블랙빈커피",
+    "category": "카페",
+    "type": "cafe",
+    "address": "충남 공주시 신관동 번영1로 28",
+    "hours": "08:30 - 22:30",
+    "mainMenu": [
+      "콜드브루",
+      "바닐라라떼",
+      "소금빵"
+    ],
+    "priceRange": "3,800원~6,500원",
+    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4696,
+    "lng": 127.1399,
+    "mapX": 52,
+    "mapY": 75,
+    "ratings": {
+      "taste": 5.8,
+      "value": 5.7,
+      "portion": 4.9,
+      "cleanliness": 6.1
+    },
+    "keywords": {
+      "food": [
+        "재료가 신선해요"
+      ],
+      "mood": [
+        "혼밥하기 좋아요",
+        "뷰가 좋아요"
+      ],
+      "etc": [
+        "친절해요"
+      ]
+    },
+    "recommendFor": [
+      "아침 커피",
+      "혼자 쉬기"
+    ],
+    "description": "등교 전 커피를 사기 좋고 혼자 머물기에도 부담 없는 카페입니다."
+  },
+  {
+    "id": "store-009",
+    "name": "든든도시락",
+    "category": "도시락",
+    "type": "restaurant",
+    "address": "충남 공주시 신관동 공주대학로 5",
+    "hours": "08:00 - 20:00",
+    "mainMenu": [
+      "제육도시락",
+      "치킨마요",
+      "샐러드볼"
+    ],
+    "priceRange": "5,500원~9,500원",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80",
+    "lat": 36.4728,
+    "lng": 127.1411,
+    "mapX": 68,
+    "mapY": 68,
+    "ratings": {
+      "taste": 5.6,
+      "value": 6.1,
+      "portion": 6.2,
+      "cleanliness": 5.8
+    },
+    "keywords": {
+      "food": [
+        "음식이 빨리 나와요",
+        "가성비가 좋아요"
+      ],
+      "mood": [
+        "혼밥하기 좋아요"
+      ],
+      "etc": [
+        "주차하기 편해요"
+      ]
+    },
+    "recommendFor": [
+      "포장",
+      "빠른 점심"
+    ],
+    "description": "수업 사이에 빠르게 포장하기 좋고 메뉴 선택지가 넓은 도시락 가게입니다."
+  }
+]
