@@ -158,6 +158,7 @@ function bindEvents() {
       didDragSheet = false;
       return;
     }
+    closeSearchOverlays({ keepSearchQuery: true });
     toggleSheet();
   });
   elements.sheetToggleButton.addEventListener("pointerdown", startSheetDrag);
@@ -226,6 +227,20 @@ function closeSearchResults() {
   elements.homeSearchResults.innerHTML = "";
 }
 
+function closeSearchOverlays({ keepSearchQuery = true } = {}) {
+  state.isSearchOpen = false;
+  elements.searchPanel.classList.remove("open");
+  elements.openSearchButton.setAttribute("aria-expanded", "false");
+  closeSearchResults();
+  closeFilterMenus();
+  elements.homeSearchInput.blur();
+  if (!keepSearchQuery) {
+    state.searchQuery = "";
+    elements.homeSearchInput.value = "";
+  }
+  applyFiltersAndSort();
+}
+
 function resetSearchState() {
   state.searchQuery = "";
   elements.homeSearchInput.value = "";
@@ -243,6 +258,7 @@ function setSheetState(nextState) {
 
 function startSheetDrag(event) {
   event.preventDefault();
+  closeSearchOverlays({ keepSearchQuery: true });
   isDraggingSheet = true;
   didDragSheet = false;
   dragStartY = event.clientY;
@@ -359,7 +375,11 @@ function applyFiltersAndSort() {
   renderStoreList(filtered);
   renderMapMarkers(filtered);
   updateFilterLabels();
-  if (state.searchQuery.trim()) renderSearchResults(state.searchQuery, "home");
+  if (state.searchQuery.trim() && state.isSearchOpen) {
+    renderSearchResults(state.searchQuery, "home");
+  } else {
+    closeSearchResults();
+  }
 }
 
 function filterStores(query = "", category = "전체") {
