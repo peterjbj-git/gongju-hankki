@@ -1,4 +1,5 @@
 const DATA_URL = "data/stores.json";
+const LEGACY_REVIEW_KEY = "gongju-hankki-reviews";
 const COMPARE_KEY = "gongju-hankki-compare";
 const DEVICE_ID_KEY = "gongju-hankki-device-id";
 const SUPABASE_URL_PLACEHOLDER = "SUPABASE_URL_HERE";
@@ -59,7 +60,9 @@ let sheetOffset = 0;
 let sheetAnimationFrame = 0;
 let isDraggingSheet = false;
 let didDragSheet = false;
-let toastTimer = 0;
+let appMessageTimer = 0;
+let appMessageHideTimer = 0;
+let ratingMessageTimer = 0;
 let supabaseClient = null;
 let onlineRatingsEnabled = false;
 let deviceId = "";
@@ -74,6 +77,11 @@ const state = {
   isSearchOpen: false,
   ratingAggregates: {},
   ratedStoreIds: new Set(),
+  ratingMessage: {
+    storeId: null,
+    text: "",
+    type: "",
+  },
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -108,6 +116,7 @@ const elements = {
   detailName: $("#detailName"),
   detailDescription: $("#detailDescription"),
   detailReviewCount: $("#detailReviewCount"),
+  ratingInlineMessage: $("#ratingInlineMessage"),
   detailKeywords: $("#detailKeywords"),
   detailAddress: $("#detailAddress"),
   detailHours: $("#detailHours"),
@@ -185,7 +194,7 @@ function bindEvents() {
   elements.closeCompareButton.addEventListener("click", closeCompareView);
   elements.closeDetailButton.addEventListener("click", closeDetail);
   elements.detailCompareButton.addEventListener("click", () => addToCompare(selectedStoreId));
-  elements.reviewButton.addEventListener("click", openReviewModal);
+  elements.reviewButton.addEventListener("click", handleReviewButtonClick);
   elements.closeReviewButton.addEventListener("click", closeReviewModal);
   elements.fitMapButton.addEventListener("click", () => {
     selectedStoreId = null;
@@ -998,6 +1007,7 @@ function openDetail(storeId) {
   elements.detailName.textContent = store.name;
   elements.detailDescription.textContent = getDisplayDescription(store);
   elements.detailReviewCount.textContent = `${formatAverageScore(ratings)} · 총 평가 ${getReviewCount(store)}개`;
+  renderRatingInlineMessage(store.id);
   elements.detailAddress.textContent = store.address;
   elements.detailHours.textContent = getDisplayHours(store);
   elements.detailMenu.textContent = getDisplayMenu(store, ", ");
@@ -1032,6 +1042,43 @@ function renderRatingBar(label, score) {
       <div class="bar-track"><div class="bar-fill" style="transform: scaleX(${hiddenPercent / 100})"></div></div>
     </div>
   `;
+}
+
+function handleReviewButtonClick() {
+  const storeId = selectedStoreId || (state.selectedStore && state.selectedStore.id);
+  console.log("[공주한끼 평가] 평가하기 클릭:", storeId);
+  if (!storeId) return;
+
+  const alreadyRated = hasUserRatedStore(storeId);
+  console.log("[공주한끼 평가] 이미 평가 여부:", alreadyRated);
+  if (alreadyRated) {
+    console.log("[공주한끼 평가] 이미 평가한 식당:", storeId);
+    closeReviewModal();
+    setRatingInlineMessage(storeId, "이미 평가한 식당입니다.", "warning");
+    return;
+  }
+
+  openReviewModal();
+}
+
+function hasUserRatedStore(storeId) {
+  if (!storeId) return false;
+  deviceId = deviceId || getDeviceId();
+
+  if (state.ratedStoreIds.has(storeId)) return true;
+  if (onlineRatingsEnabled && supabaseClient) return false;
+
+  const legacyReviews = loadLegacyReviews();
+  const storeReviews = legacyReviews[storeId];
+  if (Array.isArray(storeReviews) && storeReviews.length > 0) {
+    return storeReviews.some((review) => !review.deviceId || review.deviceId === deviceId);
+  }
+
+  if (storeReviews && typeof storeReviews === "object") {
+    return !storeReviews.deviceId || storeReviews.deviceId === deviceId;
+  }
+
+  return false;
 }
 
 function openReviewModal() {
@@ -1072,21 +1119,23 @@ function openReviewModal() {
 
 function closeReviewModal() {
   elements.reviewModal.classList.add("hidden");
+  console.log("[공주한끼 평가] 평가 모달 닫힘");
 }
 
 async function saveReview(event) {
   event.preventDefault();
   if (!selectedStoreId) return;
   if (!onlineRatingsEnabled || !supabaseClient) {
-    showToast("온라인 평가 DB 연결이 필요합니다.");
+    setRatingInlineMessage(selectedStoreId, "온라인 평가 DB 연결이 필요합니다.", "error");
     return;
   }
   if (!isKnownStoreId(selectedStoreId)) {
-    showToast("가게 정보를 확인할 수 없습니다.");
+    setRatingInlineMessage(selectedStoreId, "가게 정보를 확인할 수 없습니다.", "error");
     return;
   }
   if (state.ratedStoreIds.has(selectedStoreId)) {
-    showToast("이미 평가한 가게입니다.");
+    console.log("[공주한끼 평가] 이미 평가한 식당:", selectedStoreId);
+    setRatingInlineMessage(selectedStoreId, "이미 평가한 식당입니다.", "warning");
     return;
   }
 
@@ -1096,7 +1145,7 @@ async function saveReview(event) {
     ratings[key] = Number(formData.get(key));
   });
   if (!isValidRatings(ratings)) {
-    showToast("점수는 1~7 사이로 입력해 주세요.");
+    setRatingInlineMessage(selectedStoreId, "점수는 1~7 사이로 입력해 주세요.", "warning");
     return;
   }
 
@@ -1126,32 +1175,108 @@ async function saveReview(event) {
     console.error("Supabase 평가 저장 실패", error);
     if (isDuplicateRatingError(error)) {
       state.ratedStoreIds.add(selectedStoreId);
-      showToast("이미 평가한 가게입니다.");
+      console.log("[공주한끼 평가] 이미 평가한 식당:", selectedStoreId);
+      closeReviewModal();
+      setRatingInlineMessage(selectedStoreId, "이미 평가한 식당입니다.", "warning");
     } else {
-      showToast("평가 저장에 실패했습니다.");
+      setRatingInlineMessage(selectedStoreId, "평가 저장에 실패했습니다.", "error");
     }
     return;
   }
 
+  const savedStoreId = selectedStoreId;
   applyRatingRow(payload);
-  state.ratedStoreIds.add(selectedStoreId);
+  state.ratedStoreIds.add(savedStoreId);
+  console.log("[공주한끼 평가] 저장 성공:", savedStoreId);
 
   closeReviewModal();
-  openDetail(selectedStoreId);
+  openDetail(savedStoreId);
   applyFiltersAndSort();
-  showToast("평가가 저장되었습니다.");
+  setRatingInlineMessage(savedStoreId, "평가를 완료했습니다.", "success");
 }
 
-function showToast(message) {
-  if (!elements.toast) return;
-  window.clearTimeout(toastTimer);
-  elements.toast.textContent = message;
-  elements.toast.classList.remove("hidden");
-  elements.toast.classList.add("show");
-  toastTimer = window.setTimeout(() => {
-    elements.toast.classList.remove("show");
-    elements.toast.classList.add("hidden");
-  }, 2000);
+function setRatingInlineMessage(storeId, message, type = "info") {
+  const messageType = ["info", "success", "warning", "error"].includes(type) ? type : "info";
+  console.log("[공주한끼 평가 메시지] 표시:", storeId, message, messageType);
+  state.ratingMessage = {
+    storeId,
+    text: message,
+    type: messageType,
+  };
+  renderRatingInlineMessage(storeId);
+
+  window.clearTimeout(ratingMessageTimer);
+  ratingMessageTimer = window.setTimeout(() => {
+    if (state.ratingMessage.storeId !== storeId || state.ratingMessage.text !== message) return;
+    state.ratingMessage = { storeId: null, text: "", type: "" };
+    renderRatingInlineMessage(storeId);
+  }, 4000);
+}
+
+function renderRatingInlineMessage(storeId = selectedStoreId) {
+  const element = elements.ratingInlineMessage || $("#ratingInlineMessage");
+  if (!element) return;
+
+  const message = state.ratingMessage;
+  const shouldShow = message
+    && message.storeId === storeId
+    && message.text;
+
+  element.className = "rating-inline-message hidden";
+  element.textContent = "";
+
+  if (!shouldShow) return;
+
+  element.textContent = message.text;
+  element.classList.remove("hidden");
+  element.classList.add(`rating-inline-message-${message.type || "info"}`);
+}
+
+function showToast(message, type = "info") {
+  showAppMessage(message, type);
+}
+
+function showAppMessage(message, type = "info") {
+  console.log("[공주한끼 평가] 메시지 표시:", message, type);
+  const container = getOrCreateAppMessageContainer();
+  if (!container) return;
+  const messageType = ["info", "success", "warning", "error"].includes(type) ? type : "info";
+
+  window.clearTimeout(appMessageTimer);
+  window.clearTimeout(appMessageHideTimer);
+  container.innerHTML = "";
+
+  const messageElement = document.createElement("div");
+  messageElement.className = `app-message app-message-${messageType}`;
+  messageElement.setAttribute("role", "status");
+  messageElement.setAttribute("aria-live", "polite");
+  messageElement.textContent = message;
+  container.appendChild(messageElement);
+
+  window.requestAnimationFrame(() => {
+    messageElement.classList.add("show");
+  });
+
+  appMessageTimer = window.setTimeout(() => {
+    messageElement.classList.remove("show");
+    appMessageHideTimer = window.setTimeout(() => {
+      if (messageElement.parentElement === container) {
+        messageElement.remove();
+      }
+    }, 220);
+  }, 2500);
+}
+
+function getOrCreateAppMessageContainer() {
+  let container = document.getElementById("app-message-container");
+  if (container) return container;
+
+  container = document.createElement("div");
+  container.id = "app-message-container";
+  container.setAttribute("aria-live", "polite");
+  container.setAttribute("aria-atomic", "true");
+  document.body.appendChild(container);
+  return container;
 }
 
 function updateSliderTrack(input) {
@@ -1304,6 +1429,14 @@ function findStore(storeId) {
 
 function shortAddress(address) {
   return (address || "").replace("충남 공주시 ", "");
+}
+
+function loadLegacyReviews() {
+  try {
+    return JSON.parse(localStorage.getItem(LEGACY_REVIEW_KEY)) || {};
+  } catch {
+    return {};
+  }
 }
 
 function loadCompareIds() {
