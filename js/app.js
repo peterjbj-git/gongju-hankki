@@ -1,6 +1,8 @@
 const DATA_URL = "data/stores.json";
-const REVIEW_KEY = "gongju-hankki-reviews";
 const COMPARE_KEY = "gongju-hankki-compare";
+const DEVICE_ID_KEY = "gongju-hankki-device-id";
+const SUPABASE_URL_PLACEHOLDER = "SUPABASE_URL_HERE";
+const SUPABASE_ANON_KEY_PLACEHOLDER = "SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE";
 const KAKAO_KEY_PLACEHOLDER = "KAKAO_JAVASCRIPT_KEY_HERE";
 const KAKAO_SDK_TIMEOUT_MS = 7000;
 const MAP_DEBUG_PREFIX = "[공주한끼 지도]";
@@ -58,6 +60,9 @@ let sheetAnimationFrame = 0;
 let isDraggingSheet = false;
 let didDragSheet = false;
 let toastTimer = 0;
+let supabaseClient = null;
+let onlineRatingsEnabled = false;
+let deviceId = "";
 
 const state = {
   stores: [],
@@ -67,6 +72,8 @@ const state = {
   selectedSort: "default",
   searchQuery: "",
   isSearchOpen: false,
+  ratingAggregates: {},
+  ratedStoreIds: new Set(),
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -122,6 +129,8 @@ const elements = {
 init();
 
 async function init() {
+  deviceId = getDeviceId();
+
   try {
     const response = await fetch(DATA_URL);
     stores = await response.json();
@@ -133,6 +142,8 @@ async function init() {
     return;
   }
 
+  initSupabaseClient();
+  await loadOnlineRatings();
   compareIds = loadCompareIds();
   renderFilterMenus();
   bindEvents();
@@ -460,6 +471,180 @@ function formatScore(score) {
   return Number(score || 0) > 0 ? Number(score).toFixed(1) : "미평가";
 }
 
+function formatAverageScore(ratings) {
+  const scores = Object.keys(ratingLabels)
+    .map((key) => Number(ratings[key] || 0))
+    .filter((score) => score > 0);
+  if (!scores.length) return "미평가";
+  const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+  return `평균 점수 ${average.toFixed(1)}`;
+}
+
+function initSupabaseClient() {
+  const config = window.SUPABASE_CONFIG || (typeof SUPABASE_CONFIG !== "undefined" ? SUPABASE_CONFIG : null);
+  if (!config || isSupabasePlaceholderConfig(config)) {
+    console.info("온라인 평가 DB 연결 전입니다");
+    return;
+  }
+  if (!window.supabase || typeof window.supabase.createClient !== "function") {
+    console.error("Supabase JS SDK를 찾을 수 없습니다.");
+    return;
+  }
+
+  try {
+    supabaseClient = window.supabase.createClient(config.url, config.anonKey);
+    onlineRatingsEnabled = true;
+  } catch (error) {
+    console.error("Supabase 클라이언트 초기화 실패", error);
+    supabaseClient = null;
+    onlineRatingsEnabled = false;
+  }
+}
+
+function isSupabasePlaceholderConfig(config) {
+  return !config.url
+    || !config.anonKey
+    || config.url === SUPABASE_URL_PLACEHOLDER
+    || config.anonKey === SUPABASE_ANON_KEY_PLACEHOLDER;
+}
+
+async function loadOnlineRatings() {
+  state.ratingAggregates = {};
+  state.ratedStoreIds = new Set();
+  if (!onlineRatingsEnabled || !supabaseClient) return;
+
+  try {
+    const rows = await fetchAllRatingRows();
+    state.ratingAggregates = aggregateRatingRows(rows);
+    state.ratedStoreIds = new Set(rows
+      .filter((row) => row.device_id === deviceId && isKnownStoreId(row.store_id))
+      .map((row) => row.store_id));
+  } catch (error) {
+    console.error("Supabase 평가 데이터 로딩 실패", error);
+    onlineRatingsEnabled = false;
+    supabaseClient = null;
+    state.ratingAggregates = {};
+    state.ratedStoreIds = new Set();
+  }
+}
+
+async function fetchAllRatingRows() {
+  const pageSize = 1000;
+  let from = 0;
+  const rows = [];
+
+  while (true) {
+    const { data, error } = await supabaseClient
+      .from("ratings")
+      .select("store_id,taste,value,portion,cleanliness,food_keywords,mood_keywords,etc_keywords,device_id")
+      .range(from, from + pageSize - 1);
+
+    if (error) throw error;
+    rows.push(...(data || []));
+    if (!data || data.length < pageSize) break;
+    from += pageSize;
+  }
+
+  return rows;
+}
+
+function aggregateRatingRows(rows) {
+  const aggregates = {};
+  rows.forEach((row) => applyRatingRow(row, aggregates));
+  return aggregates;
+}
+
+function applyRatingRow(row, target = state.ratingAggregates) {
+  if (!isValidRatingRow(row)) return;
+  const storeId = row.store_id;
+  const aggregate = target[storeId] || createEmptyAggregate();
+  aggregate.ratingCount += 1;
+
+  Object.keys(ratingLabels).forEach((key) => {
+    aggregate._sums[key] += Number(row[key]);
+    aggregate.ratings[key] = aggregate._sums[key] / aggregate.ratingCount;
+  });
+
+  addKeywordCounts(aggregate._keywordCounts.food, sanitizeKeywordList(row.food_keywords, "food"));
+  addKeywordCounts(aggregate._keywordCounts.mood, sanitizeKeywordList(row.mood_keywords, "mood"));
+  addKeywordCounts(aggregate._keywordCounts.etc, sanitizeKeywordList(row.etc_keywords, "etc"));
+  aggregate.keywords.food = sortKeywordCounts(aggregate._keywordCounts.food);
+  aggregate.keywords.mood = sortKeywordCounts(aggregate._keywordCounts.mood);
+  aggregate.keywords.etc = sortKeywordCounts(aggregate._keywordCounts.etc);
+  target[storeId] = aggregate;
+}
+
+function createEmptyAggregate() {
+  return {
+    ratingCount: 0,
+    ratings: { taste: 0, value: 0, portion: 0, cleanliness: 0 },
+    keywords: { food: [], mood: [], etc: [] },
+    _sums: { taste: 0, value: 0, portion: 0, cleanliness: 0 },
+    _keywordCounts: { food: {}, mood: {}, etc: {} },
+  };
+}
+
+function isValidRatingRow(row) {
+  return row
+    && isKnownStoreId(row.store_id)
+    && Object.keys(ratingLabels).every((key) => isValidScore(row[key]));
+}
+
+function isValidRatings(ratings) {
+  return Object.keys(ratingLabels).every((key) => isValidScore(ratings[key]));
+}
+
+function isValidScore(score) {
+  return Number.isInteger(Number(score)) && Number(score) >= 1 && Number(score) <= 7;
+}
+
+function sanitizeKeywords(keywords) {
+  return {
+    food: sanitizeKeywordList(keywords.food, "food"),
+    mood: sanitizeKeywordList(keywords.mood, "mood"),
+    etc: sanitizeKeywordList(keywords.etc, "etc"),
+  };
+}
+
+function sanitizeKeywordList(items, groupKey) {
+  const allowed = new Set((keywordGroups[groupKey] && keywordGroups[groupKey].items) || []);
+  return Array.from(new Set((Array.isArray(items) ? items : []).filter((item) => allowed.has(item))));
+}
+
+function addKeywordCounts(counts, keywords) {
+  keywords.forEach((keyword) => {
+    counts[keyword] = (counts[keyword] || 0) + 1;
+  });
+}
+
+function sortKeywordCounts(counts) {
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ko"))
+    .map(([keyword]) => keyword);
+}
+
+function isKnownStoreId(storeId) {
+  return state.stores.some((store) => store.id === storeId);
+}
+
+function getDeviceId() {
+  try {
+    const savedId = localStorage.getItem(DEVICE_ID_KEY);
+    if (savedId) return savedId;
+    const nextId = window.crypto && typeof window.crypto.randomUUID === "function"
+      ? window.crypto.randomUUID()
+      : `device-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    localStorage.setItem(DEVICE_ID_KEY, nextId);
+    return nextId;
+  } catch {
+    return `device-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+}
+
+function isDuplicateRatingError(error) {
+  return error && (error.code === "23505" || String(error.message || "").includes("duplicate"));
+}
+
 async function initMap() {
   const sdkStatus = getKakaoSdkStatus();
   logMapDebug("SDK script 상태", sdkStatus);
@@ -707,7 +892,7 @@ function renderStoreList(list) {
             <h3>${store.name}</h3>
             <p class="store-meta">${store.category} · ${menuText} · ${shortAddress(store.address)}</p>
             <p class="store-meta">${priceText}</p>
-            <p class="review-count compact">총 평가 ${reviewCount}개</p>
+            <p class="review-count compact">${formatAverageScore(ratings)} · 총 평가 ${reviewCount}개</p>
           </div>
           <span class="count-badge">${store.type === "cafe" ? "카페" : "식사"}</span>
         </div>
@@ -812,7 +997,7 @@ function openDetail(storeId) {
   elements.detailCategory.textContent = `${store.category} · ${store.type === "cafe" ? "카페" : "식사"}`;
   elements.detailName.textContent = store.name;
   elements.detailDescription.textContent = getDisplayDescription(store);
-  elements.detailReviewCount.textContent = `총 평가 ${getReviewCount(store)}개`;
+  elements.detailReviewCount.textContent = `${formatAverageScore(ratings)} · 총 평가 ${getReviewCount(store)}개`;
   elements.detailAddress.textContent = store.address;
   elements.detailHours.textContent = getDisplayHours(store);
   elements.detailMenu.textContent = getDisplayMenu(store, ", ");
@@ -889,14 +1074,31 @@ function closeReviewModal() {
   elements.reviewModal.classList.add("hidden");
 }
 
-function saveReview(event) {
+async function saveReview(event) {
   event.preventDefault();
   if (!selectedStoreId) return;
+  if (!onlineRatingsEnabled || !supabaseClient) {
+    showToast("온라인 평가 DB 연결이 필요합니다.");
+    return;
+  }
+  if (!isKnownStoreId(selectedStoreId)) {
+    showToast("가게 정보를 확인할 수 없습니다.");
+    return;
+  }
+  if (state.ratedStoreIds.has(selectedStoreId)) {
+    showToast("이미 평가한 가게입니다.");
+    return;
+  }
+
   const formData = new FormData(elements.reviewForm);
   const ratings = {};
   Object.keys(ratingLabels).forEach((key) => {
     ratings[key] = Number(formData.get(key));
   });
+  if (!isValidRatings(ratings)) {
+    showToast("점수는 1~7 사이로 입력해 주세요.");
+    return;
+  }
 
   const keywords = { food: [], mood: [], etc: [] };
   elements.keywordFields.querySelectorAll(".keyword-group").forEach((group) => {
@@ -905,11 +1107,34 @@ function saveReview(event) {
       keywords[groupKey].push(button.dataset.keyword);
     });
   });
+  const sanitizedKeywords = sanitizeKeywords(keywords);
 
-  const reviews = loadReviews();
-  reviews[selectedStoreId] = reviews[selectedStoreId] || [];
-  reviews[selectedStoreId].push({ ratings, keywords, createdAt: new Date().toISOString() });
-  localStorage.setItem(REVIEW_KEY, JSON.stringify(reviews));
+  const payload = {
+    store_id: selectedStoreId,
+    taste: ratings.taste,
+    value: ratings.value,
+    portion: ratings.portion,
+    cleanliness: ratings.cleanliness,
+    food_keywords: sanitizedKeywords.food,
+    mood_keywords: sanitizedKeywords.mood,
+    etc_keywords: sanitizedKeywords.etc,
+    device_id: deviceId,
+  };
+
+  const { error } = await supabaseClient.from("ratings").insert(payload);
+  if (error) {
+    console.error("Supabase 평가 저장 실패", error);
+    if (isDuplicateRatingError(error)) {
+      state.ratedStoreIds.add(selectedStoreId);
+      showToast("이미 평가한 가게입니다.");
+    } else {
+      showToast("평가 저장에 실패했습니다.");
+    }
+    return;
+  }
+
+  applyRatingRow(payload);
+  state.ratedStoreIds.add(selectedStoreId);
 
   closeReviewModal();
   openDetail(selectedStoreId);
@@ -935,21 +1160,15 @@ function updateSliderTrack(input) {
 }
 
 function getMergedRatings(store) {
-  const reviews = loadReviews()[store.id] || [];
-  if (!reviews.length) return { ...store.ratings };
-  const merged = {};
-  Object.keys(ratingLabels).forEach((key) => {
-    const baseScore = Number(store.ratings[key] || 0);
-    const reviewTotal = reviews.reduce((sum, review) => sum + Number(review.ratings[key] || 0), 0);
-    merged[key] = baseScore > 0 ? (reviewTotal + baseScore) / (reviews.length + 1) : reviewTotal / reviews.length;
-  });
-  return merged;
+  const aggregate = state.ratingAggregates[store.id];
+  if (aggregate && aggregate.ratingCount > 0) return { ...aggregate.ratings };
+  return { ...store.ratings };
 }
 
 function getReviewCount(store) {
-  const baseCount = Number(store.ratingCount || 0);
-  const localCount = (loadReviews()[store.id] || []).length;
-  return baseCount + localCount;
+  const aggregate = state.ratingAggregates[store.id];
+  if (aggregate) return aggregate.ratingCount;
+  return Number(store.ratingCount || 0);
 }
 
 function getDisplayMenu(store, separator = "; ") {
@@ -982,14 +1201,18 @@ function isUnknownValue(value) {
 }
 
 function getTopKeywords(store) {
+  const aggregate = state.ratingAggregates[store.id];
+  if (aggregate && aggregate.ratingCount > 0) {
+    return [
+      ...aggregate.keywords.food,
+      ...aggregate.keywords.mood,
+      ...aggregate.keywords.etc,
+    ];
+  }
+
   const counts = {};
   Object.values(store.keywords || {}).flat().forEach((keyword) => {
     counts[keyword] = (counts[keyword] || 0) + 1;
-  });
-  (loadReviews()[store.id] || []).forEach((review) => {
-    Object.values(review.keywords).flat().forEach((keyword) => {
-      counts[keyword] = (counts[keyword] || 0) + 1;
-    });
   });
   return Object.entries(counts)
     .sort((a, b) => b[1] - a[1])
@@ -1081,14 +1304,6 @@ function findStore(storeId) {
 
 function shortAddress(address) {
   return (address || "").replace("충남 공주시 ", "");
-}
-
-function loadReviews() {
-  try {
-    return JSON.parse(localStorage.getItem(REVIEW_KEY)) || {};
-  } catch {
-    return {};
-  }
 }
 
 function loadCompareIds() {

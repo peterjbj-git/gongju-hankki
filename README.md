@@ -11,6 +11,7 @@ gongju-hankki/
 ├─ css/
 │  └─ style.css
 ├─ js/
+│  ├─ config.js
 │  └─ app.js
 ├─ scripts/
 │  ├─ build_store_db_from_kakao.py
@@ -61,6 +62,87 @@ KAKAO_REST_API_KEY=실제_REST_API_키
 ```
 
 `.env`는 `.gitignore`에 포함되어 있으므로 GitHub에 올리지 않습니다.
+
+## Supabase 온라인 평가 DB 설정
+
+식당 기본정보는 계속 `data/stores.json`을 사용하고, 사용자 평가만 Supabase `ratings` 테이블에 저장합니다. `localStorage`는 공용 평가 저장소가 아니라 `device_id` 저장과 같은 기기 중복 평가 방지용으로만 사용합니다.
+
+Supabase 프로젝트를 만든 뒤 SQL Editor에서 아래 SQL을 실행합니다.
+
+```sql
+create table if not exists public.ratings (
+  id uuid primary key default gen_random_uuid(),
+  store_id text not null,
+  taste int not null check (taste between 1 and 7),
+  value int not null check (value between 1 and 7),
+  portion int not null check (portion between 1 and 7),
+  cleanliness int not null check (cleanliness between 1 and 7),
+  food_keywords text[] not null default '{}',
+  mood_keywords text[] not null default '{}',
+  etc_keywords text[] not null default '{}',
+  device_id text not null,
+  created_at timestamptz not null default now(),
+  constraint ratings_one_per_device unique (store_id, device_id),
+  constraint ratings_food_keywords_allowed check (
+    food_keywords <@ array['재료가 신선해요', '특별한 메뉴가 있어요', '가성비가 좋아요', '음식이 빨리 나와요']::text[]
+  ),
+  constraint ratings_mood_keywords_allowed check (
+    mood_keywords <@ array['대화하기 좋아요', '사진이 잘 나와요', '뷰가 좋아요', '혼밥하기 좋아요', '특별한 날 가기 좋아요']::text[]
+  ),
+  constraint ratings_etc_keywords_allowed check (
+    etc_keywords <@ array['주차하기 편해요', '화장실이 깨끗해요', '친절해요']::text[]
+  )
+);
+```
+
+RLS를 켜고 공개 앱에서 필요한 `select`, `insert`만 허용합니다.
+
+```sql
+alter table public.ratings enable row level security;
+
+drop policy if exists "ratings are publicly readable" on public.ratings;
+create policy "ratings are publicly readable"
+on public.ratings
+for select
+using (true);
+
+drop policy if exists "ratings can be inserted from public app" on public.ratings;
+create policy "ratings can be inserted from public app"
+on public.ratings
+for insert
+with check (
+  store_id <> ''
+  and device_id <> ''
+  and taste between 1 and 7
+  and value between 1 and 7
+  and portion between 1 and 7
+  and cleanliness between 1 and 7
+  and food_keywords <@ array['재료가 신선해요', '특별한 메뉴가 있어요', '가성비가 좋아요', '음식이 빨리 나와요']::text[]
+  and mood_keywords <@ array['대화하기 좋아요', '사진이 잘 나와요', '뷰가 좋아요', '혼밥하기 좋아요', '특별한 날 가기 좋아요']::text[]
+  and etc_keywords <@ array['주차하기 편해요', '화장실이 깨끗해요', '친절해요']::text[]
+);
+```
+
+Project URL과 키는 Supabase Dashboard의 프로젝트 `Connect` 화면 또는 `Settings > API Keys`에서 확인합니다. 브라우저에 넣는 키는 `publishable key` 또는 legacy `anon` key만 사용하세요. `service_role` key, `secret` key, 데이터베이스 비밀번호는 프론트엔드에 절대 넣지 않습니다.
+
+`js/config.js`의 placeholder를 실제 값으로 교체합니다.
+
+```js
+const SUPABASE_CONFIG = {
+  url: "https://프로젝트_REF.supabase.co",
+  anonKey: "SUPABASE_PUBLISHABLE_OR_ANON_KEY"
+};
+```
+
+`js/config.js`가 placeholder 상태이거나 Supabase 연결에 실패해도 앱은 기존 지도, 리스트, 검색, 필터, 정렬, 바텀시트, 상세정보, 비교하기 기능을 계속 표시합니다. 이 상태에서 평가 저장을 누르면 온라인 평가 DB 연결이 필요하다는 토스트가 표시됩니다.
+
+온라인 평가 DB 구조:
+
+- `store_id`: `data/stores.json`의 식당 `id`
+- `taste`, `value`, `portion`, `cleanliness`: 1~7점 평가
+- `food_keywords`, `mood_keywords`, `etc_keywords`: 앱에 정의된 키워드 배열
+- `device_id`: 브라우저별 중복 평가 방지용 임의 ID
+- `created_at`: 평가 생성 시각
 
 ## JavaScript SDK 도메인 등록
 
@@ -177,6 +259,6 @@ id,name,category,type,address,hours,mainMenu,priceRange,avgPricePerPerson,descri
 - 지도 마커와 가게 카드 클릭 시 상세정보 표시
 - 맛·가성비·양·청결도 1~7점 슬라이더 평가
 - 키워드 버튼 선택 평가
-- 평가 결과 `localStorage` 저장 및 평균 점수 반영
+- Supabase `ratings` 테이블 기반 온라인 평가 저장 및 평균 점수 반영
 - 가게 2개 비교하기
 - GitHub Pages 정적 배포 구조
